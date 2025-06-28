@@ -40,6 +40,7 @@ export default function ChatbotPage() {
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -47,8 +48,16 @@ export default function ChatbotPage() {
   };
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+    // Solo hacer scroll automático después de la carga inicial
+    if (!isInitialLoad) {
+      scrollToBottom();
+    }
+  }, [messages, isInitialLoad]);
+
+  useEffect(() => {
+    // Marcar que ya no es la carga inicial después del primer render
+    setIsInitialLoad(false);
+  }, []);
 
   const simulateTyping = (response: string) => {
     setIsTyping(true);
