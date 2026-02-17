@@ -59,23 +59,23 @@ const principles = [
 
 export default function MetodologiaPage() {
   return (
-    <div className="min-h-screen bg-[#0d1117] py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-white sm:text-5xl mb-6">
+    <div className="app-page">
+      <div className="app-container">
+        <div className="app-page-header">
+          <h1 className="app-page-title">
             Como <span className="text-brand-300">Sastres Tecnológicos</span>
           </h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="app-page-subtitle">
             Nuestra metodología en 4 pasos garantiza soluciones a medida, robustas y bien pensadas para cada cliente
           </p>
         </div>
 
         {/* Proceso */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-white text-center mb-12">
+        <div className="mb-14 md:mb-20">
+          <h2 className="mb-8 text-center text-2xl font-bold text-white sm:text-3xl md:mb-12">
             Nuestro <span className="text-brand-300">Proceso en 4 Pasos</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {methodology.map((phase, index) => (
               <Card key={index} className="bg-gray-800/50 border-gray-700 backdrop-blur-sm text-center">
                 <CardHeader>
@@ -93,10 +93,10 @@ export default function MetodologiaPage() {
 
         {/* Principios */}
         <div>
-          <h2 className="text-3xl font-bold text-white text-center mb-12">
-            Filosofía <span className="text-brand-300">DevTailor</span>
+          <h2 className="mb-8 text-center text-2xl font-bold text-white sm:text-3xl md:mb-12">
+            Filosofía <span className="text-brand-300">Selference</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {principles.map((principle, index) => (
               <Card key={index} className="bg-gray-800/50 border-gray-700 backdrop-blur-sm text-center">
                 <CardHeader>

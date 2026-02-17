@@ -14,6 +14,11 @@ body {
 
 @layer base {
   :root {
+    --container-padding-x: 1rem;
+    --container-max-width: 1536px;
+    --section-space-y: clamp(3rem, 5vw, 6rem);
+    --page-title-size: clamp(1.875rem, 4vw, 3.25rem);
+    --page-subtitle-size: clamp(1rem, 1.8vw, 1.25rem);
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -90,6 +95,52 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  html,
+  body {
+    width: 100%;
+    overflow-x: clip;
+  }
+
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-300 ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  .app-container {
+    @apply mx-auto w-full max-w-[var(--container-max-width)] px-4 sm:px-5 md:px-6 lg:px-8;
+  }
+
+  .app-page {
+    @apply min-h-screen bg-[#0d1117] pt-24 pb-12 sm:pt-28 sm:pb-16;
+  }
+
+  .app-section {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  .app-page-header {
+    @apply mb-10 text-center md:mb-14;
+  }
+
+  .app-page-title {
+    font-size: var(--page-title-size);
+    @apply mb-4 font-bold leading-tight text-white md:mb-6;
+  }
+
+  .app-page-subtitle {
+    font-size: var(--page-subtitle-size);
+    @apply mx-auto max-w-3xl text-balance text-gray-300;
   }
 }
 

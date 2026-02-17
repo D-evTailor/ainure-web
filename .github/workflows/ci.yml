@@ -33,17 +33,17 @@ jobs:
       run: pnpm install
 
     - name: Lint
-      run: pnpm --filter @devtailor/mail-service lint
+      run: pnpm --filter @selference/mail-service lint
 
     - name: Test
-      run: pnpm --filter @devtailor/mail-service test
+      run: pnpm --filter @selference/mail-service test
 
     - name: Build Docker image
       uses: docker/build-push-action@v4
       with:
         context: ./packages/mail-service
         push: false
-        tags: devtailor/mail-service:latest
+        tags: selference/mail-service:latest
 
   publish-to-ghcr:
     needs: build-and-test

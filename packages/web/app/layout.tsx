@@ -9,7 +9,7 @@ import { Footer } from "@/components/layout/footer";
 const manrope = Manrope({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "DevTailor - Desarrollo de Software a Medida",
+  title: "Selference - Desarrollo de Software a Medida",
   description: "Soluciones de software personalizadas para tu empresa",
   generator: "v0.dev",
 };
@@ -22,6 +22,12 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body className={manrope.className}>
+        <a
+          href="#main-content"
+          className="sr-only z-[60] rounded-md bg-brand-300 px-4 py-2 font-medium text-black focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        >
+          Saltar al contenido principal
+        </a>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -30,7 +36,9 @@ export default function RootLayout({
         >
           <div className="min-h-screen flex flex-col">
             <Header />
-            <main className="flex-1">{children}</main>
+            <main id="main-content" className="flex-1">
+              {children}
+            </main>
             <Footer />
           </div>
         </ThemeProvider>

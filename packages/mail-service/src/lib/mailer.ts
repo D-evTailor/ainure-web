@@ -52,7 +52,7 @@ export const sendEmail = async (
 ) => {
   const from = new Sender(
     process.env.MAILERSEND_SENDER_EMAIL || 'no-reply@trial-z3m5jgrynokg7qrx.mlsender.net',
-    process.env.MAILERSEND_SENDER_NAME || 'DevTailor'
+    process.env.MAILERSEND_SENDER_NAME || 'Selference'
   );
 
   const recipients = [new Recipient(to)];

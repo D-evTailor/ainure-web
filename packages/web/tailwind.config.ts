@@ -11,11 +11,28 @@ const config: Config = {
   ],
   prefix: "",
   theme: {
+    screens: {
+      xs: "320px",
+      sm: "480px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+    },
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.25rem",
+        md: "1.5rem",
+        lg: "2rem",
+      },
       screens: {
-        "2xl": "1400px",
+        sm: "100%",
+        md: "100%",
+        lg: "100%",
+        xl: "1280px",
+        "2xl": "1536px",
       },
     },
     extend: {

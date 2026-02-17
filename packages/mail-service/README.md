@@ -26,7 +26,7 @@ Crea un archivo `.env` en la raíz de este paquete (`packages/mail-service`) bas
 Para iniciar el servidor en modo de desarrollo con recarga automática:
 
 ```bash
-pnpm --filter @devtailor/mail-service dev
+pnpm --filter @selference/mail-service dev
 ```
 
 ### 5. Probar el servicio
@@ -34,7 +34,7 @@ pnpm --filter @devtailor/mail-service dev
 Para ejecutar los tests unitarios:
 
 ```bash
-pnpm --filter @devtailor/mail-service test
+pnpm --filter @selference/mail-service test
 ```
 
 ## 🐳 Docker
@@ -43,7 +43,7 @@ Para construir y ejecutar la imagen de Docker:
 
 ```bash
 # Construir la imagen
-docker build -t devtailor/mail-service .
+docker build -t selference/mail-service .
 
 # Levantar con Docker Compose
 docker-compose up -d

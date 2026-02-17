@@ -1,6 +1,6 @@
 # 🎨 Estilo Visual y Guía de UI/UX
 
-Este documento define la paleta de colores, tipografía y otros aspectos del diseño visual para DevTailor.
+Este documento define la paleta de colores, tipografía y otros aspectos del diseño visual para Selference.
 
 ## 🌈 Paleta de Colores
 

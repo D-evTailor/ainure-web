@@ -1,6 +1,6 @@
-# 🗺️ Roadmap de Desarrollo - DevTailor
+# 🗺️ Roadmap de Desarrollo - Selference
 
-Este documento describe los próximos pasos para completar el desarrollo del sitio web de DevTailor.
+Este documento describe los próximos pasos para completar el desarrollo del sitio web de Selference.
 
 ## ✅ Hito 1: Fundación y Estructura (Completado)
 
@@ -13,7 +13,7 @@ Este documento describe los próximos pasos para completar el desarrollo del sit
 ## 🚀 Hito 2: Contenido y Diseño Detallado
 
 - **[ ]** **Definir el Copywriting**: Redactar los textos finales para cada sección de cada página.
-  - **Propietario**: Equipo DevTailor
+  - **Propietario**: Equipo Selference
   - **Deadline**: 30/08/2024
   - `servicios`: Descripción detallada de cada servicio.
   - `metodologia`: Explicación del proceso de trabajo.

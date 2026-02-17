@@ -29,9 +29,13 @@ export function Header() {
       setScrolled(window.scrollY > 64);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header 
@@ -42,8 +46,8 @@ export function Header() {
           : "bg-transparent"
       )}
     >
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Top">
-        <div className="flex w-full items-center justify-between py-4">
+      <nav className="app-container" aria-label="Top">
+        <div className="flex w-full items-center justify-between py-3 md:py-4">
           <div className="flex items-center">
             <Link
               href="/"
@@ -51,11 +55,11 @@ export function Header() {
             >
               <Image
                 src="/dev_tailor_logo.png"
-                alt="DevTailor Logo"
-                width={150}
+                alt="Selference Logo"
+                width={144}
                 height={40}
                 priority
-                className="h-12 w-auto"
+                className="h-10 w-auto sm:h-11 md:h-12"
               />
             </Link>
           </div>
@@ -67,7 +71,7 @@ export function Header() {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "text-base font-medium transition-all duration-200 relative inline-flex items-center gap-2",
+                  "relative inline-flex items-center gap-2 text-sm font-medium transition-all duration-200 lg:text-base",
                   pathname === item.href
                     ? "text-brand-300 after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-0.5 after:bg-brand-300 after:rounded-full"
                     : scrolled 
@@ -105,7 +109,10 @@ export function Header() {
               variant="ghost"
               size="sm"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-white hover:bg-white/10"
+              className="h-11 w-11 p-0 text-white hover:bg-white/10"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
+              aria-label={mobileMenuOpen ? "Cerrar menu principal" : "Abrir menu principal"}
             >
               {mobileMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -118,7 +125,10 @@ export function Header() {
 
         {/* Mobile navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-white/10 bg-[#0d1117]/95 backdrop-blur supports-[backdrop-filter]:backdrop-blur">
+          <div
+            id="mobile-navigation"
+            className="border-t border-white/10 bg-[#0d1117]/95 backdrop-blur supports-[backdrop-filter]:backdrop-blur md:hidden"
+          >
             <div className="space-y-1 pb-3 pt-2">
               {navigation.map((item) => (
                 <Link

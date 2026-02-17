@@ -1,8 +1,8 @@
-# 🤖 Sistema de Chatbot Inteligente - DevTailor
+# 🤖 Sistema de Chatbot Inteligente - Selference
 
 ## 🎯 Visión General
 
-El **Asistente de Proyectos de DevTailor** es una solución de chatbot avanzada diseñada para revolucionar el proceso de captación y definición de proyectos de software. Combina inteligencia artificial conversacional con análisis en tiempo real para guiar a los usuarios hacia la definición perfecta de su proyecto tecnológico.
+El **Asistente de Proyectos de Selference** es una solución de chatbot avanzada diseñada para revolucionar el proceso de captación y definición de proyectos de software. Combina inteligencia artificial conversacional con análisis en tiempo real para guiar a los usuarios hacia la definición perfecta de su proyecto tecnológico.
 
 ---
 
@@ -343,7 +343,7 @@ interface ChatSession {
 ## 📞 Contacto y Soporte
 
 **Equipo de Desarrollo:**
-- **Lead Developer:** DevTailor Tech Team
+- **Lead Developer:** Selference Tech Team
 - **UX/UI Designer:** Internal Design Team
 - **AI Specialist:** External Consultant
 

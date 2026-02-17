@@ -31,7 +31,7 @@ interface ContactForm {
 }
 
 const contactInfo = [
-  { icon: Mail, title: "Email", value: "info@devtailor.com" },
+  { icon: Mail, title: "Email", value: "info@selference.com" },
   { icon: Phone, title: "Teléfono", value: "+34 XXX XXX XXX" },
   { icon: MapPin, title: "Ubicación", value: "España (Remoto)" },
   { icon: Clock, title: "Horario", value: "Lun - Vie: 9:00 - 18:00" },
@@ -82,18 +82,18 @@ export default function ContactoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0d1117] py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-white sm:text-5xl mb-6">
+    <div className="app-page">
+      <div className="app-container">
+        <div className="app-page-header">
+          <h1 className="app-page-title">
             <span className="text-brand-300">Contacto</span>
           </h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="app-page-subtitle">
             ¿Tienes un proyecto en mente? Hablemos sobre cómo convertir tu idea en realidad
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {/* Información de contacto */}
           <div className="lg:col-span-1">
             <div className="space-y-4">
@@ -120,7 +120,7 @@ export default function ContactoPage() {
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div>
                       <Label htmlFor="name" className="text-gray-300">Nombre *</Label>
                       <Input
@@ -153,7 +153,7 @@ export default function ContactoPage() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div>
                       <Label htmlFor="company" className="text-gray-300">Empresa</Label>
                       <Input 

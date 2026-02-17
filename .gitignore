@@ -35,3 +35,30 @@ packages/web/scripts/
 
 # Credenciales
 
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE / editor
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing / coverage
+coverage/
+.nyc_output/
+*.lcov
+
+# Cache / tooling
+.cache/
+.eslintcache
+.turbo
+.parcel-cache/
+
+# Logs (genérico)
+*.log
+logs/
+
+# Build artifacts (libs/paquetes)
+dist/

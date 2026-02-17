@@ -1,4 +1,4 @@
-# 🏗️ Arquitectura Técnica - Chatbot DevTailor
+# 🏗️ Arquitectura Técnica - Chatbot Selference
 
 ## 📐 Arquitectura General
 

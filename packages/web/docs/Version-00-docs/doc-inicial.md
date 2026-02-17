@@ -1,8 +1,8 @@
-# 🧵 DevTailor – Web Corporativa
+# 🧵 Selference – Web Corporativa
 
 ## 🎯 Propósito
 
-DevTailor es una empresa joven de desarrollo de software a medida. Esta web busca proyectar una imagen profesional, cercana y técnica que inspire confianza desde el primer momento, incluso sin contar aún con casos de éxito.
+Selference es una empresa joven de desarrollo de software a medida. Esta web busca proyectar una imagen profesional, cercana y técnica que inspire confianza desde el primer momento, incluso sin contar aún con casos de éxito.
 
 ## 🧠 Filosofía
 

@@ -80,7 +80,7 @@ export function ContenidoCharlasCards() {
           key={index}
           className="bg-gray-800/50 border-gray-700 backdrop-blur-sm hover:bg-gray-800/70 transition-colors"
         >
-          <CardHeader className="flex flex-row items-start gap-4">
+          <CardHeader className="flex flex-col items-start gap-4 sm:flex-row">
             <div className="rounded-lg bg-brand-900/50 p-3 shrink-0">
               <recurso.icon className="h-6 w-6 text-brand-300" />
             </div>

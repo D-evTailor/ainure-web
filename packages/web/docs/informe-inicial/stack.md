@@ -1,6 +1,6 @@
 # 🛠️ Stack Tecnológico
 
-Este documento describe las tecnologías, frameworks y librerías que forman la base del proyecto DevTailor.
+Este documento describe las tecnologías, frameworks y librerías que forman la base del proyecto Selference.
 
 ## Frontend
 

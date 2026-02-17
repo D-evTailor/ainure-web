@@ -42,18 +42,18 @@ const values = [
 
 export default function ValoresPage() {
   return (
-    <div className="min-h-screen bg-[#0d1117] py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-white sm:text-5xl mb-6">
+    <div className="app-page">
+      <div className="app-container">
+        <div className="app-page-header">
+          <h1 className="app-page-title">
             Nuestros <span className="text-brand-300">Valores</span>
           </h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="app-page-subtitle">
             Principios que nos definen como sastres tecnológicos y guían cada proyecto a medida
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="mb-12 grid grid-cols-1 gap-6 md:mb-16 md:grid-cols-2 lg:grid-cols-3">
           {values.map((value, index) => (
             <Card key={index} className="bg-gray-800/50 border-gray-700 backdrop-blur-sm h-full">
               <CardHeader>
@@ -68,7 +68,7 @@ export default function ValoresPage() {
         </div>
 
         {/* Misión y Visión */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <Card className="bg-gradient-to-br from-brand-900/50 to-brand-800/50 border-brand-600/30 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="text-2xl text-brand-300">Nuestra Misión</CardTitle>

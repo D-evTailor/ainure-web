@@ -293,14 +293,15 @@ export default function CuestionarioOtorrinoPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0d1117] py-20">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <Link href="/talks" className="text-sm text-brand-300 hover:text-brand-200">Volver a TALKS</Link>
-        </div>
-        <Card className="overflow-hidden border-gray-700 bg-gray-800/50 backdrop-blur-sm">
-          <div className="h-1.5 w-full bg-gray-700"><div className="h-1.5 bg-brand-300 transition-all duration-300" style={{ width: `${progress}%` }} /></div>
-          <CardHeader className="space-y-5">
+    <div className="app-page">
+      <div className="app-container">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-8">
+            <Link href="/talks" className="text-sm text-brand-300 hover:text-brand-200">Volver a TALKS</Link>
+          </div>
+          <Card className="overflow-hidden border-gray-700 bg-gray-800/50 backdrop-blur-sm">
+            <div className="h-1.5 w-full bg-gray-700"><div className="h-1.5 bg-brand-300 transition-all duration-300" style={{ width: `${progress}%` }} /></div>
+            <CardHeader className="space-y-5">
             <div className="flex flex-wrap items-center gap-3">
               <span className="rounded-full border border-brand-300/30 bg-brand-300/10 px-3 py-1 text-xs font-medium text-brand-200">Cuestionario expres</span>
               <span className="inline-flex items-center gap-2 rounded-full border border-gray-600 px-3 py-1 text-xs text-gray-300"><Clock3 className="h-3.5 w-3.5" />2-3 minutos</span>
@@ -314,9 +315,9 @@ export default function CuestionarioOtorrinoPage() {
               <p className="text-sm text-gray-300">Progreso del formulario</p>
               <p className="text-sm font-medium text-brand-200">{completedSteps}/8 preguntas completadas ({progress}%)</p>
             </div>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-10">
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-10">
               <input
                 type="text"
                 name="website"
@@ -561,13 +562,14 @@ export default function CuestionarioOtorrinoPage() {
                 </div>
               ) : null}
 
-              <div className="flex flex-col gap-3 rounded-xl border border-gray-700 bg-gray-900/50 p-4 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-xs text-gray-400">Tus respuestas se guardan de forma segura en Supabase.</p>
-                <Button type="submit" disabled={submitting} className="sm:min-w-52">{submitting ? "Enviando..." : "Enviar cuestionario"}</Button>
-              </div>
-            </form>
-          </CardContent>
-        </Card>
+                <div className="flex flex-col gap-3 rounded-xl border border-gray-700 bg-gray-900/50 p-4 sm:flex-row sm:items-center sm:justify-between">
+                  <p className="text-xs text-gray-400">Tus respuestas se guardan de forma segura en Supabase.</p>
+                  <Button type="submit" disabled={submitting} className="sm:min-w-52">{submitting ? "Enviando..." : "Enviar cuestionario"}</Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   );

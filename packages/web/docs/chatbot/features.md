@@ -1,4 +1,4 @@
-# ✨ Características y Funcionalidades - Chatbot DevTailor
+# ✨ Características y Funcionalidades - Chatbot Selference
 
 ## 🎯 Funcionalidades Core
 
@@ -213,7 +213,7 @@ const generateProjectSummary = (analysis: ProjectAnalysis): ProjectSummary => {
 const generatePDFReport = async (projectData: ProjectAnalysis): Promise<Blob> => {
   const doc = new jsPDF();
   
-  // Header con logo DevTailor
+  // Header con logo Selference
   doc.addImage(logoBase64, 'PNG', 20, 20, 40, 10);
   doc.setFontSize(20);
   doc.text('Análisis de Proyecto', 20, 50);
@@ -471,7 +471,7 @@ const useCollaboration = (sessionId: string) => {
   
   useEffect(() => {
     // WebSocket connection for real-time collaboration
-    const ws = new WebSocket(`wss://api.devtailor.com/collaborate/${sessionId}`);
+    const ws = new WebSocket(`wss://api.selference.com/collaborate/${sessionId}`);
     
     ws.onmessage = (event) => {
       const update = JSON.parse(event.data);

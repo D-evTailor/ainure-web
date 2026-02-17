@@ -35,13 +35,13 @@ const talks = [
 
 export default function TalksPage() {
   return (
-    <div className="min-h-screen bg-[#0d1117] py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-white sm:text-5xl mb-6">
+    <div className="app-page">
+      <div className="app-container">
+        <div className="app-page-header">
+          <h1 className="app-page-title">
             <span className="text-brand-300">TALKS</span>
           </h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="app-page-subtitle">
             Charlas sobre inteligencia artificial que hemos impartido, con foco en
             el sector salud: implementación de flujos de trabajo y optimización
             del día a día del médico.
@@ -49,18 +49,18 @@ export default function TalksPage() {
         </div>
 
         {/* Bloques temáticos */}
-        <div className="grid gap-6 max-w-4xl mx-auto">
+        <div className="mx-auto grid max-w-4xl gap-6">
           {talks.map((talk, index) => (
             <Card
               key={index}
               className="bg-gray-800/50 border-gray-700 backdrop-blur-sm"
             >
-              <CardHeader className="flex flex-row items-start gap-4">
+              <CardHeader className="flex flex-col items-start gap-4 sm:flex-row">
                 <div className="rounded-lg bg-brand-900/50 p-3 shrink-0">
                   <talk.icon className="h-8 w-8 text-brand-300" />
                 </div>
                 <div>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-white">
                     <Mic2 className="h-5 w-5 text-brand-300" />
                     {talk.title}
                   </CardTitle>
@@ -86,17 +86,17 @@ export default function TalksPage() {
         </div>
 
         {/* Contenido charlas */}
-        <section className="max-w-4xl mx-auto mt-20">
-          <h2 className="text-2xl font-bold text-white mb-6">
+        <section className="mx-auto mt-14 max-w-4xl md:mt-20">
+          <h2 className="mb-6 text-2xl font-bold text-white md:text-3xl">
             <span className="text-brand-300">Contenido charlas</span>
           </h2>
-          <p className="text-gray-400 mb-8">
+          <p className="mb-8 text-gray-400">
             Material de apoyo de nuestras charlas: guías, notebooks y presentaciones para consultar o descargar.
           </p>
           <ContenidoCharlasCards />
         </section>
 
-        <p className="text-center text-gray-500 text-sm mt-12 max-w-2xl mx-auto">
+        <p className="mx-auto mt-12 max-w-2xl text-center text-sm text-gray-500">
           Si quieres que demos una charla en tu centro, colegio profesional o
           evento, contacta con nosotros desde la sección{" "}
           <Link href="/contacto" className="text-brand-300 hover:underline">

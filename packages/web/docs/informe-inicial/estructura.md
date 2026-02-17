@@ -1,6 +1,6 @@
-# 🏗️ Estructura del Proyecto DevTailor
+# 🏗️ Estructura del Proyecto Selference
 
-Este documento detalla la estructura de carpetas y las convenciones de nomenclatura utilizadas en el proyecto DevTailor.
+Este documento detalla la estructura de carpetas y las convenciones de nomenclatura utilizadas en el proyecto Selference.
 
 ## 📂 Carpetas Principales
 

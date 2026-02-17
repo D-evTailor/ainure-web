@@ -1,4 +1,4 @@
-# 🚀 Guía de Deployment - Chatbot DevTailor
+# 🚀 Guía de Deployment - Chatbot Selference
 
 ## 📋 Requisitos Previos
 
@@ -29,7 +29,7 @@ Git >= 2.30.0
 ### **1. Instalación de Dependencias**
 ```bash
 # Clonar el repositorio
-git clone https://github.com/devtailor/chatbot-system.git
+git clone https://github.com/selference/chatbot-system.git
 cd chatbot-system
 
 # Instalar dependencias
@@ -109,7 +109,7 @@ vercel --prod
   "regions": ["iad1"],
   "env": {
     "NEXT_PUBLIC_APP_ENV": "production",
-    "NEXT_PUBLIC_API_URL": "https://chatbot.devtailor.com/api"
+    "NEXT_PUBLIC_API_URL": "https://chatbot.selference.com/api"
   },
   "functions": {
     "app/api/**/*.ts": {
@@ -140,7 +140,7 @@ vercel --prod
 ```bash
 # Configurar a través de Vercel Dashboard o CLI
 vercel env add NEXT_PUBLIC_APP_ENV production
-vercel env add NEXT_PUBLIC_API_URL https://chatbot.devtailor.com/api
+vercel env add NEXT_PUBLIC_API_URL https://chatbot.selference.com/api
 vercel env add HUBSPOT_API_KEY your_production_key
 ```
 
@@ -279,7 +279,7 @@ docker-compose exec chatbot-app sh
 ```yaml
 # task-definition.json
 {
-  "family": "chatbot-devtailor",
+  "family": "chatbot-selference",
   "networkMode": "awsvpc",
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "256",
@@ -317,7 +317,7 @@ docker-compose exec chatbot-app sh
 ### **2. CloudFormation Template**
 ```yaml
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'ChatBot DevTailor Infrastructure'
+Description: 'ChatBot Selference Infrastructure'
 
 Parameters:
   Environment:
@@ -490,7 +490,7 @@ const logger = winston.createLogger({
     winston.format.errors({ stack: true })
   ),
   defaultMeta: {
-    service: 'chatbot-devtailor',
+    service: 'chatbot-selference',
     environment: process.env.NODE_ENV
   },
   transports: [
@@ -616,7 +616,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Deploy to Staging
         run: |
-          vercel --token ${{ secrets.VERCEL_TOKEN }} --scope devtailor
+          vercel --token ${{ secrets.VERCEL_TOKEN }} --scope selference
 
   deploy-production:
     needs: test
@@ -626,7 +626,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Deploy to Production
         run: |
-          vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --scope devtailor
+          vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --scope selference
 ```
 
 ### **2. Quality Gates**

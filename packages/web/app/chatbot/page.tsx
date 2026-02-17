@@ -33,7 +33,7 @@ export default function ChatbotPage() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
-      content: "¡Hola! Soy tu asistente digital de DevTailor. Estoy aquí para ayudarte a definir tu proyecto ideal. Cuéntame: ¿qué desafío tecnológico quieres resolver?",
+      content: "¡Hola! Soy tu asistente digital de Selference. Estoy aquí para ayudarte a definir tu proyecto ideal. Cuéntame: ¿qué desafío tecnológico quieres resolver?",
       isUser: false,
       timestamp: new Date()
     }
@@ -140,30 +140,30 @@ export default function ChatbotPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0d1117] via-[#161b22] to-[#0d1117] pt-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+    <div className="app-page bg-gradient-to-br from-[#0d1117] via-[#161b22] to-[#0d1117]">
+      <div className="app-container py-4 sm:py-6 md:py-8">
         
         {/* Header Section */}
-        <div className="text-center mb-8">
+        <div className="mb-8 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="p-3 bg-gradient-to-r from-brand-400 to-brand-300 rounded-xl">
-              <Sparkles className="h-8 w-8 text-white" />
+              <Sparkles className="h-6 w-6 text-white sm:h-8 sm:w-8" />
             </div>
-            <h1 className="text-4xl font-bold text-white">
+            <h1 className="text-3xl font-bold text-white md:text-4xl">
               Asistente de <span className="text-brand-300">Proyectos</span>
             </h1>
           </div>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-base text-gray-300 sm:text-lg md:text-xl">
             Conversemos sobre tu idea. Nuestro asistente inteligente te ayudará a definir el proyecto perfecto para tu negocio.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-4 gap-8">
+        <div className="grid gap-6 lg:grid-cols-4 lg:gap-8">
           
           {/* Project Types Sidebar */}
-          <div className="lg:col-span-1 space-y-6">
+          <div className="space-y-6 lg:col-span-1">
             <Card className="bg-gray-800/50 border-gray-700 backdrop-blur-sm">
-              <CardContent className="p-6">
+              <CardContent className="p-4 sm:p-6">
                 <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
                   <Lightbulb className="h-5 w-5 text-brand-300" />
                   Tipos de Proyecto
@@ -189,10 +189,10 @@ export default function ChatbotPage() {
             </Card>
 
             <Card className="bg-gray-800/50 border-gray-700 backdrop-blur-sm">
-              <CardContent className="p-6">
+              <CardContent className="p-4 sm:p-6">
                 <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
                   <CheckCircle2 className="h-5 w-5 text-brand-300" />
-                  Proceso DevTailor
+                  Proceso Selference
                 </h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-center gap-2 text-gray-300">
@@ -218,10 +218,10 @@ export default function ChatbotPage() {
 
           {/* Chat Interface */}
           <div className="lg:col-span-3 lg:self-stretch">
-            <Card className="bg-gray-800/50 border-gray-700 backdrop-blur-sm h-full flex flex-col">
+            <Card className="flex min-h-[560px] flex-col border-gray-700 bg-gray-800/50 backdrop-blur-sm lg:min-h-[640px]">
               
               {/* Messages Container */}
-              <div className="flex-1 p-6 overflow-y-auto space-y-4">
+              <div className="flex-1 space-y-4 overflow-y-auto p-4 sm:p-6">
                 {messages.map((message) => (
                   <div
                     key={message.id}
@@ -232,7 +232,7 @@ export default function ChatbotPage() {
                   >
                     <div
                       className={cn(
-                        "max-w-[80%] p-4 rounded-xl",
+                        "max-w-[92%] rounded-xl p-3 sm:max-w-[80%] sm:p-4",
                         message.isUser
                           ? "bg-[rgb(24,59,63)] text-white ml-4"
                           : "bg-gray-700/80 text-gray-100 mr-4",
@@ -261,7 +261,7 @@ export default function ChatbotPage() {
 
               {/* Suggested Questions */}
               {messages.length === 1 && (
-                <div className="px-6 pb-4">
+                <div className="px-4 pb-4 sm:px-6">
                   <p className="text-sm text-gray-400 mb-3">Sugerencias para empezar:</p>
                   <div className="flex flex-wrap gap-2">
                     {suggestedQuestions.map((question, index) => (
@@ -279,15 +279,15 @@ export default function ChatbotPage() {
               )}
 
               {/* Input Area */}
-              <div className="p-6 border-t border-gray-700">
-                <div className="flex gap-3">
+              <div className="border-t border-gray-700 p-4 sm:p-6">
+                <div className="flex flex-col gap-3 sm:flex-row">
                   <div className="flex-1 relative">
                     <textarea
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
                       onKeyPress={handleKeyPress}
                       placeholder="Describe tu proyecto, idea o desafío tecnológico..."
-                      className="w-full bg-gray-700/50 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-300 focus:border-transparent resize-none"
+                      className="w-full resize-none rounded-xl border border-gray-600 bg-gray-700/50 px-4 py-3 text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-brand-300"
                       rows={2}
                       disabled={isTyping}
                     />
@@ -295,7 +295,7 @@ export default function ChatbotPage() {
                   <Button
                     onClick={() => handleSendMessage()}
                     disabled={!inputValue.trim() || isTyping}
-                    className="bg-[rgb(24,59,63)] hover:bg-[rgb(18,45,48)] text-white px-6 py-3 h-auto"
+                    className="h-auto px-6 py-3 text-white bg-[rgb(24,59,63)] hover:bg-[rgb(18,45,48)] sm:self-end"
                   >
                     <Send className="h-5 w-5" />
                   </Button>

@@ -101,62 +101,75 @@ export default function HomePage() {
         }
       `}</style>
       
-      <section className="relative isolate min-h-screen flex items-center bg-[#0d1117] px-8 py-16">
+      <section className="relative isolate overflow-hidden bg-[#0d1117] pt-24 pb-14 sm:pt-28 md:pb-20">
         <Image
           src="/background.png"
-          alt="Dev Tailor hero image"
-          layout="fill"
-          objectFit="contain"
-          className="absolute inset-0 h-full w-full -z-10"
+          alt="Selference hero image"
+          fill
+          sizes="100vw"
+          className="absolute inset-0 -z-10 h-full w-full object-cover object-center opacity-60"
           priority
         />
 
-        {/* VSCode-like Editor Window - moved to the right */}
-        <div className="absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 w-full max-w-[31.5rem] h-[33vh] rounded-2xl shadow-2xl border border-white/10 bg-gradient-to-br from-brand-900 via-brand-800 to-brand-900 overflow-hidden">
-          {/* Top bar */}
-          <div className="flex items-center h-10 px-4 bg-gradient-to-r from-brand-800/80 to-brand-700/80 border-b border-white/10">
-            {/* Window controls */}
-            <div className="flex items-center gap-2 mr-4">
-              <span className="w-3 h-3 rounded-full bg-red-400/80 border border-red-900/40"></span>
-              <span className="w-3 h-3 rounded-full bg-yellow-400/80 border border-yellow-900/40"></span>
-              <span className="w-3 h-3 rounded-full bg-green-400/80 border border-green-900/40"></span>
+        <div className="app-container">
+          <div className="grid items-center gap-8 lg:grid-cols-2">
+            <div className="space-y-4 text-center lg:text-left">
+              <h1 className="text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+                Software a medida para acelerar resultados reales
+              </h1>
+              <p className="mx-auto max-w-2xl text-base text-gray-300 sm:text-lg lg:mx-0">
+                Diseñamos, construimos e iteramos productos digitales robustos con enfoque en negocio, experiencia de usuario y mantenimiento a largo plazo.
+              </p>
+              <div className="pt-2">
+                <Link
+                  href="/chatbot"
+                  className="inline-flex min-h-11 items-center justify-center rounded-xl bg-brand-400 px-6 py-3 font-medium text-white transition hover:bg-brand-500"
+                >
+                  Empezar mi proyecto
+                </Link>
+              </div>
             </div>
-            <span className="text-xs text-white/70 font-mono select-none">Button.jsx</span>
-          </div>
 
-          {/* Editor body with guide lines */}
-          <div className="relative px-6 py-8 h-full bg-gradient-to-br from-brand-900/80 to-brand-800/80 flex flex-col">
-            {/* Guide lines */}
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="h-full w-px bg-white/5 absolute left-1/4 top-0"></div>
-              <div className="h-full w-px bg-white/5 absolute left-1/2 top-0"></div>
-              <div className="h-full w-px bg-white/5 absolute left-3/4 top-0"></div>
-              <div className="w-full h-px bg-white/5 absolute top-1/4 left-0"></div>
-              <div className="w-full h-px bg-white/5 absolute top-1/2 left-0"></div>
-              <div className="w-full h-px bg-white/5 absolute top-3/4 left-0"></div>
-            </div>
-            
-            {/* Code area */}
-            <div className="flex-1 flex flex-col justify-between">
-              <pre className="relative z-10 whitespace-pre-wrap text-green-400 font-mono text-sm md:text-base select-none">
-                {typedText}
-                {isTyping && <span className="animate-pulse">|</span>}
-              </pre>
+            <div className="overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-brand-900 via-brand-800 to-brand-900 shadow-2xl">
+              <div className="flex h-10 items-center border-b border-white/10 bg-gradient-to-r from-brand-800/80 to-brand-700/80 px-4">
+                <div className="mr-4 flex items-center gap-2">
+                  <span className="h-3 w-3 rounded-full border border-red-900/40 bg-red-400/80"></span>
+                  <span className="h-3 w-3 rounded-full border border-yellow-900/40 bg-yellow-400/80"></span>
+                  <span className="h-3 w-3 rounded-full border border-green-900/40 bg-green-400/80"></span>
+                </div>
+                <span className="select-none font-mono text-xs text-white/70">Button.jsx</span>
+              </div>
 
-              {/* Progressive button preview */}
-              <div className="relative z-20 flex justify-center pb-4">
-                <button className={getProgressiveButtonStyle()}>
-                  {currentConfig.label}
-                </button>
+              <div className="relative flex min-h-[320px] flex-col bg-gradient-to-br from-brand-900/80 to-brand-800/80 px-4 py-6 sm:px-6 sm:py-8">
+                <div className="pointer-events-none absolute inset-0">
+                  <div className="absolute left-1/4 top-0 h-full w-px bg-white/5"></div>
+                  <div className="absolute left-1/2 top-0 h-full w-px bg-white/5"></div>
+                  <div className="absolute left-3/4 top-0 h-full w-px bg-white/5"></div>
+                  <div className="absolute left-0 top-1/4 h-px w-full bg-white/5"></div>
+                  <div className="absolute left-0 top-1/2 h-px w-full bg-white/5"></div>
+                  <div className="absolute left-0 top-3/4 h-px w-full bg-white/5"></div>
+                </div>
+
+                <div className="relative z-10 flex flex-1 flex-col justify-between gap-6">
+                  <pre className="select-none whitespace-pre-wrap break-words font-mono text-xs text-green-400 sm:text-sm md:text-base">
+                    {typedText}
+                    {isTyping && <span className="animate-pulse">|</span>}
+                  </pre>
+                  <div className="relative z-20 flex justify-center pb-2">
+                    <button className={getProgressiveButtonStyle()}>
+                      {currentConfig.label}
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-[#0d1117]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="app-section bg-[#0d1117]">
+        <div className="app-container">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             <Card className="bg-gray-800/50 border-gray-700 backdrop-blur-sm">
               <CardHeader>
                 <Code className="h-10 w-10 text-brand-300 mb-4" />
@@ -190,13 +203,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative bg-[#0d1117] py-16 overflow-hidden">
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-[#0d1117] py-12 md:py-16">
+        <div className="app-container relative">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-white sm:text-4xl">
+            <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-4xl">
               ¿Listo para transformar tu negocio?
             </h2>
-            <p className="mt-4 text-lg text-gray-300">
+            <p className="mt-4 text-base text-gray-300 sm:text-lg">
               Hablemos sobre tu proyecto y cómo podemos ayudarte a alcanzar tus objetivos
             </p>
             <div className="mt-8">

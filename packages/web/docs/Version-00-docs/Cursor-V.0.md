@@ -1,8 +1,8 @@
-# 🔍 Cursor Review – DevTailor Project Bootstrap
+# 🔍 Cursor Review – Selference Project Bootstrap
 
 ## 🎯 Objetivo
 
-Analiza el proyecto DevTailor ya generado por Vercel para validar que la estructura inicial cumple con los requisitos y está lista para construir la web final.
+Analiza el proyecto Selference ya generado por Vercel para validar que la estructura inicial cumple con los requisitos y está lista para construir la web final.
 
 ## ✅ Puntos a verificar
 

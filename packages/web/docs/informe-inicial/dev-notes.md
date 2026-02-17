@@ -1,6 +1,6 @@
 # 📝 Notas de Desarrollo y Decisiones Clave
 
-Este documento es una bitácora de decisiones importantes tomadas durante el desarrollo del proyecto DevTailor.
+Este documento es una bitácora de decisiones importantes tomadas durante el desarrollo del proyecto Selference.
 
 ## 2024-07-29
 

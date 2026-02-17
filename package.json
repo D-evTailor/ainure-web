@@ -1,5 +1,5 @@
 {
-  "name": "devtailor-monorepo",
+  "name": "selference-monorepo",
   "private": true,
   "scripts": {
     "dev": "pnpm --parallel --stream dev",

@@ -49,18 +49,18 @@ const services = [
 
 export default function ServiciosPage() {
   return (
-    <div className="min-h-screen bg-[#0d1117] py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-white sm:text-5xl mb-6">
+    <div className="app-page">
+      <div className="app-container">
+        <div className="app-page-header">
+          <h1 className="app-page-title">
             Nuestros <span className="text-brand-300">Servicios</span>
           </h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="app-page-subtitle">
             Soluciones tecnológicas completas para impulsar tu negocio
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="mb-12 grid grid-cols-1 gap-6 md:mb-16 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <Card key={index} className="bg-gray-800/50 border-gray-700 backdrop-blur-sm h-full">
               <CardHeader>
@@ -83,10 +83,10 @@ export default function ServiciosPage() {
         </div>
 
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">
+          <h2 className="mb-4 text-2xl font-bold text-white md:text-3xl">
             ¿Proyecto específico en mente?
           </h2>
-          <p className="text-gray-300 mb-8">
+          <p className="mb-8 text-gray-300">
             Cada solución es única. Hablemos sobre tus necesidades
           </p>
           <Link
