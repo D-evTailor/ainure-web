@@ -1,4 +1,3 @@
 {
-  "/api/talks/questionnaire/route": "app/api/talks/questionnaire/route.js",
   "/talks/cuestionario/otorrinolaringologia/page": "app/talks/cuestionario/otorrinolaringologia/page.js"
 }

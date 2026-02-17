@@ -2,8 +2,15 @@
 
 import { FormEvent, useMemo, useState } from "react";
 import Link from "next/link";
+import { CheckCircle2, Clock3, ShieldCheck } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
 type QuestionnairePayload = {
   specialty: "otorrinolaringologia";
@@ -128,8 +135,26 @@ export default function CuestionarioOtorrinoPage() {
 
   const q2SelectedCount = answers.q2_main_pain.length;
   const q5SelectedCount = answers.q5_ideal_ai_help.length;
+  const q2HasOther = answers.q2_main_pain.includes("Otro");
+  const q3HasOther = answers.q3_repetitive_tasks.includes("Otra");
 
   const canSubmit = useMemo(() => !submitting, [submitting]);
+
+  const completedSteps = useMemo(() => {
+    const steps = [
+      Boolean(answers.q1_profile),
+      answers.q2_main_pain.length > 0 && (!q2HasOther || Boolean(answers.q2_other.trim())),
+      answers.q3_repetitive_tasks.length > 0 && (!q3HasOther || Boolean(answers.q3_other.trim())),
+      Boolean(answers.q4_ai_usage),
+      answers.q5_ideal_ai_help.length > 0,
+      Boolean(answers.q6_first_use_case),
+      Boolean(answers.q7_main_barrier),
+      Boolean(answers.q8_open_answer.trim()),
+    ];
+    return steps.filter(Boolean).length;
+  }, [answers, q2HasOther, q3HasOther]);
+
+  const progress = Math.round((completedSteps / 8) * 100);
 
   function validate(): Errors {
     const nextErrors: Errors = {};
@@ -212,104 +237,174 @@ export default function CuestionarioOtorrinoPage() {
           </Link>
         </div>
 
-        <Card className="bg-gray-800/50 border-gray-700 backdrop-blur-sm">
-          <CardHeader>
-            <CardTitle className="text-white text-2xl">
-              Cuestionario expres: IA para Otorrinolaringologia
-            </CardTitle>
-            <p className="text-gray-300 text-sm">
-              Objetivo: entender que tareas del dia a dia os quitan mas tiempo y donde la IA puede
-              ayudaros de forma realista. Tiempo estimado: 2-3 minutos.
-            </p>
+        <Card className="overflow-hidden border-gray-700 bg-gray-800/50 backdrop-blur-sm">
+          <div className="h-1.5 w-full bg-gray-700">
+            <div className="h-1.5 bg-brand-300 transition-all duration-300" style={{ width: `${progress}%` }} />
+          </div>
+          <CardHeader className="space-y-5">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="rounded-full border border-brand-300/30 bg-brand-300/10 px-3 py-1 text-xs font-medium text-brand-200">
+                Cuestionario expres
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-gray-600 px-3 py-1 text-xs text-gray-300">
+                <Clock3 className="h-3.5 w-3.5" />
+                2-3 minutos
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-gray-600 px-3 py-1 text-xs text-gray-300">
+                <ShieldCheck className="h-3.5 w-3.5" />
+                Datos protegidos
+              </span>
+            </div>
+            <div>
+              <CardTitle className="text-2xl text-white sm:text-3xl">
+                IA para Otorrinolaringologia
+              </CardTitle>
+              <p className="mt-3 text-sm leading-6 text-gray-300">
+                Objetivo: entender que tareas del dia a dia os quitan mas tiempo y donde la IA puede
+                ayudaros de forma realista.
+              </p>
+            </div>
+            <div className="flex items-center justify-between rounded-lg border border-gray-700 bg-gray-900/60 px-4 py-3">
+              <p className="text-sm text-gray-300">Progreso del formulario</p>
+              <p className="text-sm font-medium text-brand-200">
+                {completedSteps}/8 preguntas completadas ({progress}%)
+              </p>
+            </div>
           </CardHeader>
 
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-10">
-              <section className="space-y-3">
-                <h2 className="text-white font-semibold">1. Perfil profesional</h2>
-                <p className="text-gray-300">1. Cual es tu situacion actual?</p>
-                <div className="space-y-2">
-                  {q1Options.map((option) => (
-                    <label key={option} className="flex items-center gap-3 text-gray-200">
-                      <input
-                        type="radio"
-                        name="q1"
-                        checked={answers.q1_profile === option}
-                        onChange={() => setAnswers((prev) => ({ ...prev, q1_profile: option }))}
-                      />
-                      {option}
-                    </label>
-                  ))}
-                </div>
+              <section className="space-y-4 rounded-xl border border-gray-700 bg-gray-900/40 p-5">
+                <h2 className="text-lg font-semibold text-white">1. Perfil profesional</h2>
+                <p className="text-gray-300">Cual es tu situacion actual?</p>
+                <RadioGroup
+                  value={answers.q1_profile}
+                  onValueChange={(value) => setAnswers((prev) => ({ ...prev, q1_profile: value }))}
+                  className="space-y-2"
+                >
+                  {q1Options.map((option, index) => {
+                    const id = `q1-${index}`;
+                    const selected = answers.q1_profile === option;
+                    return (
+                      <label
+                        key={option}
+                        htmlFor={id}
+                        className={cn(
+                          "flex cursor-pointer items-start gap-3 rounded-lg border px-3 py-3 transition-colors",
+                          selected
+                            ? "border-brand-300/60 bg-brand-300/10"
+                            : "border-gray-700 bg-gray-900/40 hover:border-gray-600",
+                        )}
+                      >
+                        <RadioGroupItem id={id} value={option} className="mt-0.5 border-gray-400 text-brand-300" />
+                        <Label htmlFor={id} className="cursor-pointer text-gray-100">
+                          {option}
+                        </Label>
+                      </label>
+                    );
+                  })}
+                </RadioGroup>
                 {errors.q1_profile ? <p className="text-sm text-red-400">{errors.q1_profile}</p> : null}
               </section>
 
-              <section className="space-y-3">
-                <h2 className="text-white font-semibold">2. Dolor principal del dia a dia</h2>
+              <section className="space-y-4 rounded-xl border border-gray-700 bg-gray-900/40 p-5">
+                <h2 className="text-lg font-semibold text-white">2. Dolor principal del dia a dia</h2>
                 <p className="text-gray-300">
-                  2. Que parte de tu trabajo te consume mas tiempo o energia mental? (elige hasta 2)
+                  Que parte de tu trabajo te consume mas tiempo o energia mental? (elige hasta 2)
                 </p>
                 <div className="space-y-2">
-                  {q2Options.map((option) => (
-                    <label key={option} className="flex items-center gap-3 text-gray-200">
-                      <input
-                        type="checkbox"
-                        checked={answers.q2_main_pain.includes(option)}
-                        onChange={() => {
-                          const result = toggleArrayValue(answers.q2_main_pain, option, 2);
-                          if (result.limitReached) {
-                            setFeedback("En la pregunta 2 solo puedes seleccionar hasta 2 opciones.");
-                            return;
-                          }
-                          setFeedback("");
-                          setAnswers((prev) => ({ ...prev, q2_main_pain: result.next }));
-                        }}
-                      />
-                      {option}
-                    </label>
-                  ))}
+                  {q2Options.map((option, index) => {
+                    const id = `q2-${index}`;
+                    const selected = answers.q2_main_pain.includes(option);
+                    return (
+                      <label
+                        key={option}
+                        htmlFor={id}
+                        className={cn(
+                          "flex cursor-pointer items-start gap-3 rounded-lg border px-3 py-3 transition-colors",
+                          selected
+                            ? "border-brand-300/60 bg-brand-300/10"
+                            : "border-gray-700 bg-gray-900/40 hover:border-gray-600",
+                        )}
+                      >
+                        <Checkbox
+                          id={id}
+                          checked={selected}
+                          onCheckedChange={() => {
+                            const result = toggleArrayValue(answers.q2_main_pain, option, 2);
+                            if (result.limitReached) {
+                              setFeedback("En la pregunta 2 solo puedes seleccionar hasta 2 opciones.");
+                              return;
+                            }
+                            setFeedback("");
+                            setAnswers((prev) => ({ ...prev, q2_main_pain: result.next }));
+                          }}
+                          className="mt-0.5 border-gray-400 data-[state=checked]:bg-brand-300 data-[state=checked]:text-black"
+                        />
+                        <Label htmlFor={id} className="cursor-pointer text-gray-100">
+                          {option}
+                        </Label>
+                      </label>
+                    );
+                  })}
                 </div>
                 <p className="text-xs text-gray-400">Seleccionadas: {q2SelectedCount}/2</p>
-                {answers.q2_main_pain.includes("Otro") ? (
-                  <input
+                {q2HasOther ? (
+                  <Input
                     type="text"
                     value={answers.q2_other}
                     onChange={(event) => setAnswers((prev) => ({ ...prev, q2_other: event.target.value }))}
                     placeholder="Especifica 'Otro'"
-                    className="w-full rounded-md border border-gray-600 bg-gray-900 px-3 py-2 text-gray-100"
+                    className="border-gray-600 bg-gray-900 text-gray-100"
                   />
                 ) : null}
                 {errors.q2_main_pain ? <p className="text-sm text-red-400">{errors.q2_main_pain}</p> : null}
                 {errors.q2_other ? <p className="text-sm text-red-400">{errors.q2_other}</p> : null}
               </section>
 
-              <section className="space-y-3">
-                <h2 className="text-white font-semibold">3. Tareas repetitivas</h2>
+              <section className="space-y-4 rounded-xl border border-gray-700 bg-gray-900/40 p-5">
+                <h2 className="text-lg font-semibold text-white">3. Tareas repetitivas</h2>
                 <p className="text-gray-300">
-                  3. Que tarea repites tantas veces que te gustaria automatizarla?
+                  Que tarea repites tantas veces que te gustaria automatizarla?
                 </p>
                 <div className="space-y-2">
-                  {q3Options.map((option) => (
-                    <label key={option} className="flex items-center gap-3 text-gray-200">
-                      <input
-                        type="checkbox"
-                        checked={answers.q3_repetitive_tasks.includes(option)}
-                        onChange={() => {
-                          const result = toggleArrayValue(answers.q3_repetitive_tasks, option);
-                          setAnswers((prev) => ({ ...prev, q3_repetitive_tasks: result.next }));
-                        }}
-                      />
-                      {option}
-                    </label>
-                  ))}
+                  {q3Options.map((option, index) => {
+                    const id = `q3-${index}`;
+                    const selected = answers.q3_repetitive_tasks.includes(option);
+                    return (
+                      <label
+                        key={option}
+                        htmlFor={id}
+                        className={cn(
+                          "flex cursor-pointer items-start gap-3 rounded-lg border px-3 py-3 transition-colors",
+                          selected
+                            ? "border-brand-300/60 bg-brand-300/10"
+                            : "border-gray-700 bg-gray-900/40 hover:border-gray-600",
+                        )}
+                      >
+                        <Checkbox
+                          id={id}
+                          checked={selected}
+                          onCheckedChange={() => {
+                            const result = toggleArrayValue(answers.q3_repetitive_tasks, option);
+                            setAnswers((prev) => ({ ...prev, q3_repetitive_tasks: result.next }));
+                          }}
+                          className="mt-0.5 border-gray-400 data-[state=checked]:bg-brand-300 data-[state=checked]:text-black"
+                        />
+                        <Label htmlFor={id} className="cursor-pointer text-gray-100">
+                          {option}
+                        </Label>
+                      </label>
+                    );
+                  })}
                 </div>
-                {answers.q3_repetitive_tasks.includes("Otra") ? (
-                  <input
+                {q3HasOther ? (
+                  <Input
                     type="text"
                     value={answers.q3_other}
                     onChange={(event) => setAnswers((prev) => ({ ...prev, q3_other: event.target.value }))}
                     placeholder="Especifica 'Otra'"
-                    className="w-full rounded-md border border-gray-600 bg-gray-900 px-3 py-2 text-gray-100"
+                    className="border-gray-600 bg-gray-900 text-gray-100"
                   />
                 ) : null}
                 {errors.q3_repetitive_tasks ? (
@@ -318,125 +413,187 @@ export default function CuestionarioOtorrinoPage() {
                 {errors.q3_other ? <p className="text-sm text-red-400">{errors.q3_other}</p> : null}
               </section>
 
-              <section className="space-y-3">
-                <h2 className="text-white font-semibold">4. Uso actual de IA</h2>
-                <p className="text-gray-300">4. Has usado alguna vez herramientas de IA tipo ChatGPT?</p>
-                <div className="space-y-2">
-                  {q4Options.map((option) => (
-                    <label key={option} className="flex items-center gap-3 text-gray-200">
-                      <input
-                        type="radio"
-                        name="q4"
-                        checked={answers.q4_ai_usage === option}
-                        onChange={() => setAnswers((prev) => ({ ...prev, q4_ai_usage: option }))}
-                      />
-                      {option}
-                    </label>
-                  ))}
-                </div>
+              <section className="space-y-4 rounded-xl border border-gray-700 bg-gray-900/40 p-5">
+                <h2 className="text-lg font-semibold text-white">4. Uso actual de IA</h2>
+                <p className="text-gray-300">Has usado alguna vez herramientas de IA tipo ChatGPT?</p>
+                <RadioGroup
+                  value={answers.q4_ai_usage}
+                  onValueChange={(value) => setAnswers((prev) => ({ ...prev, q4_ai_usage: value }))}
+                  className="space-y-2"
+                >
+                  {q4Options.map((option, index) => {
+                    const id = `q4-${index}`;
+                    const selected = answers.q4_ai_usage === option;
+                    return (
+                      <label
+                        key={option}
+                        htmlFor={id}
+                        className={cn(
+                          "flex cursor-pointer items-start gap-3 rounded-lg border px-3 py-3 transition-colors",
+                          selected
+                            ? "border-brand-300/60 bg-brand-300/10"
+                            : "border-gray-700 bg-gray-900/40 hover:border-gray-600",
+                        )}
+                      >
+                        <RadioGroupItem id={id} value={option} className="mt-0.5 border-gray-400 text-brand-300" />
+                        <Label htmlFor={id} className="cursor-pointer text-gray-100">
+                          {option}
+                        </Label>
+                      </label>
+                    );
+                  })}
+                </RadioGroup>
                 {errors.q4_ai_usage ? <p className="text-sm text-red-400">{errors.q4_ai_usage}</p> : null}
               </section>
 
-              <section className="space-y-3">
-                <h2 className="text-white font-semibold">5. Escenario ideal de ayuda con IA</h2>
+              <section className="space-y-4 rounded-xl border border-gray-700 bg-gray-900/40 p-5">
+                <h2 className="text-lg font-semibold text-white">5. Escenario ideal de ayuda con IA</h2>
                 <p className="text-gray-300">
-                  5. Imagina que tienes un asistente de IA en tu consulta. Que te gustaria que hiciera por ti automaticamente? (elige hasta 2)
+                  Imagina que tienes un asistente de IA en tu consulta. Que te gustaria que hiciera por ti automaticamente? (elige hasta 2)
                 </p>
                 <div className="space-y-2">
-                  {q5Options.map((option) => (
-                    <label key={option} className="flex items-center gap-3 text-gray-200">
-                      <input
-                        type="checkbox"
-                        checked={answers.q5_ideal_ai_help.includes(option)}
-                        onChange={() => {
-                          const result = toggleArrayValue(answers.q5_ideal_ai_help, option, 2);
-                          if (result.limitReached) {
-                            setFeedback("En la pregunta 5 solo puedes seleccionar hasta 2 opciones.");
-                            return;
-                          }
-                          setFeedback("");
-                          setAnswers((prev) => ({ ...prev, q5_ideal_ai_help: result.next }));
-                        }}
-                      />
-                      {option}
-                    </label>
-                  ))}
+                  {q5Options.map((option, index) => {
+                    const id = `q5-${index}`;
+                    const selected = answers.q5_ideal_ai_help.includes(option);
+                    return (
+                      <label
+                        key={option}
+                        htmlFor={id}
+                        className={cn(
+                          "flex cursor-pointer items-start gap-3 rounded-lg border px-3 py-3 transition-colors",
+                          selected
+                            ? "border-brand-300/60 bg-brand-300/10"
+                            : "border-gray-700 bg-gray-900/40 hover:border-gray-600",
+                        )}
+                      >
+                        <Checkbox
+                          id={id}
+                          checked={selected}
+                          onCheckedChange={() => {
+                            const result = toggleArrayValue(answers.q5_ideal_ai_help, option, 2);
+                            if (result.limitReached) {
+                              setFeedback("En la pregunta 5 solo puedes seleccionar hasta 2 opciones.");
+                              return;
+                            }
+                            setFeedback("");
+                            setAnswers((prev) => ({ ...prev, q5_ideal_ai_help: result.next }));
+                          }}
+                          className="mt-0.5 border-gray-400 data-[state=checked]:bg-brand-300 data-[state=checked]:text-black"
+                        />
+                        <Label htmlFor={id} className="cursor-pointer text-gray-100">
+                          {option}
+                        </Label>
+                      </label>
+                    );
+                  })}
                 </div>
                 <p className="text-xs text-gray-400">Seleccionadas: {q5SelectedCount}/2</p>
                 {errors.q5_ideal_ai_help ? <p className="text-sm text-red-400">{errors.q5_ideal_ai_help}</p> : null}
               </section>
 
-              <section className="space-y-3">
-                <h2 className="text-white font-semibold">6. Nivel de interes real</h2>
+              <section className="space-y-4 rounded-xl border border-gray-700 bg-gray-900/40 p-5">
+                <h2 className="text-lg font-semibold text-white">6. Nivel de interes real</h2>
                 <p className="text-gray-300">
-                  6. Si existiera una herramienta de IA segura y legal en el hospital, para que la usarias primero?
+                  Si existiera una herramienta de IA segura y legal en el hospital, para que la usarias primero?
                 </p>
-                <div className="space-y-2">
-                  {q6Options.map((option) => (
-                    <label key={option} className="flex items-center gap-3 text-gray-200">
-                      <input
-                        type="radio"
-                        name="q6"
-                        checked={answers.q6_first_use_case === option}
-                        onChange={() => setAnswers((prev) => ({ ...prev, q6_first_use_case: option }))}
-                      />
-                      {option}
-                    </label>
-                  ))}
-                </div>
+                <RadioGroup
+                  value={answers.q6_first_use_case}
+                  onValueChange={(value) => setAnswers((prev) => ({ ...prev, q6_first_use_case: value }))}
+                  className="space-y-2"
+                >
+                  {q6Options.map((option, index) => {
+                    const id = `q6-${index}`;
+                    const selected = answers.q6_first_use_case === option;
+                    return (
+                      <label
+                        key={option}
+                        htmlFor={id}
+                        className={cn(
+                          "flex cursor-pointer items-start gap-3 rounded-lg border px-3 py-3 transition-colors",
+                          selected
+                            ? "border-brand-300/60 bg-brand-300/10"
+                            : "border-gray-700 bg-gray-900/40 hover:border-gray-600",
+                        )}
+                      >
+                        <RadioGroupItem id={id} value={option} className="mt-0.5 border-gray-400 text-brand-300" />
+                        <Label htmlFor={id} className="cursor-pointer text-gray-100">
+                          {option}
+                        </Label>
+                      </label>
+                    );
+                  })}
+                </RadioGroup>
                 {errors.q6_first_use_case ? <p className="text-sm text-red-400">{errors.q6_first_use_case}</p> : null}
               </section>
 
-              <section className="space-y-3">
-                <h2 className="text-white font-semibold">7. Barrera principal para adoptar IA</h2>
-                <p className="text-gray-300">7. Que es lo que mas te frena para usar IA en tu trabajo diario?</p>
-                <div className="space-y-2">
-                  {q7Options.map((option) => (
-                    <label key={option} className="flex items-center gap-3 text-gray-200">
-                      <input
-                        type="radio"
-                        name="q7"
-                        checked={answers.q7_main_barrier === option}
-                        onChange={() => setAnswers((prev) => ({ ...prev, q7_main_barrier: option }))}
-                      />
-                      {option}
-                    </label>
-                  ))}
-                </div>
+              <section className="space-y-4 rounded-xl border border-gray-700 bg-gray-900/40 p-5">
+                <h2 className="text-lg font-semibold text-white">7. Barrera principal para adoptar IA</h2>
+                <p className="text-gray-300">Que es lo que mas te frena para usar IA en tu trabajo diario?</p>
+                <RadioGroup
+                  value={answers.q7_main_barrier}
+                  onValueChange={(value) => setAnswers((prev) => ({ ...prev, q7_main_barrier: value }))}
+                  className="space-y-2"
+                >
+                  {q7Options.map((option, index) => {
+                    const id = `q7-${index}`;
+                    const selected = answers.q7_main_barrier === option;
+                    return (
+                      <label
+                        key={option}
+                        htmlFor={id}
+                        className={cn(
+                          "flex cursor-pointer items-start gap-3 rounded-lg border px-3 py-3 transition-colors",
+                          selected
+                            ? "border-brand-300/60 bg-brand-300/10"
+                            : "border-gray-700 bg-gray-900/40 hover:border-gray-600",
+                        )}
+                      >
+                        <RadioGroupItem id={id} value={option} className="mt-0.5 border-gray-400 text-brand-300" />
+                        <Label htmlFor={id} className="cursor-pointer text-gray-100">
+                          {option}
+                        </Label>
+                      </label>
+                    );
+                  })}
+                </RadioGroup>
                 {errors.q7_main_barrier ? <p className="text-sm text-red-400">{errors.q7_main_barrier}</p> : null}
               </section>
 
-              <section className="space-y-3">
-                <h2 className="text-white font-semibold">8. Pregunta abierta clave</h2>
+              <section className="space-y-4 rounded-xl border border-gray-700 bg-gray-900/40 p-5">
+                <h2 className="text-lg font-semibold text-white">8. Pregunta abierta clave</h2>
                 <p className="text-gray-300">
-                  8. Si pudieras eliminar una tarea de tu trabajo manana mismo, cual seria?
+                  Si pudieras eliminar una tarea de tu trabajo manana mismo, cual seria?
                 </p>
-                <textarea
+                <Textarea
                   value={answers.q8_open_answer}
                   onChange={(event) => setAnswers((prev) => ({ ...prev, q8_open_answer: event.target.value }))}
-                  className="min-h-28 w-full rounded-md border border-gray-600 bg-gray-900 px-3 py-2 text-gray-100"
+                  className="min-h-28 border-gray-600 bg-gray-900 text-gray-100"
                   placeholder="Escribe tu respuesta"
                 />
                 {errors.q8_open_answer ? <p className="text-sm text-red-400">{errors.q8_open_answer}</p> : null}
               </section>
 
               {feedback ? (
-                <p
-                  className={
+                <div
+                  className={cn(
+                    "rounded-lg border px-4 py-3 text-sm",
                     feedback.startsWith("Gracias")
-                      ? "text-sm text-emerald-400"
-                      : "text-sm text-amber-300"
-                  }
+                      ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-300"
+                      : "border-amber-500/30 bg-amber-500/10 text-amber-300",
+                  )}
                 >
-                  {feedback}
-                </p>
+                  <div className="flex items-center gap-2">
+                    {feedback.startsWith("Gracias") ? <CheckCircle2 className="h-4 w-4" /> : null}
+                    <p>{feedback}</p>
+                  </div>
+                </div>
               ) : null}
 
-              <div className="flex items-center gap-4">
-                <Button type="submit" disabled={!canSubmit}>
+              <div className="flex flex-col gap-3 rounded-xl border border-gray-700 bg-gray-900/50 p-4 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-xs text-gray-400">Tus respuestas se guardan de forma segura en Supabase.</p>
+                <Button type="submit" disabled={!canSubmit} className="sm:min-w-52">
                   {submitting ? "Enviando..." : "Enviar cuestionario"}
                 </Button>
-                <p className="text-xs text-gray-400">Tus respuestas se guardan de forma segura en Supabase.</p>
               </div>
             </form>
           </CardContent>
