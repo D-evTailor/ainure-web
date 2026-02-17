@@ -8,9 +8,6 @@
     "lint": "pnpm --parallel --stream lint",
     "format": "prettier --write \"**/*.{ts,tsx,js,json,md,mdx}\""
   },
-  "dependencies": {
-    "next": "16.1.6"
-  },
   "devDependencies": {
     "typescript": "^5",
     "eslint": "^8.57.0",
