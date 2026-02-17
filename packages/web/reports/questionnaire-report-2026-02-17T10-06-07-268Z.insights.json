@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-02-17T10:06:07.274Z",
+  "specialtyFilter": "otorrinolaringologia",
+  "totalResponses": 1,
+  "readiness": {
+    "score": 0,
+    "habitual": 0,
+    "occasional": 0,
+    "noUse": 1
+  },
+  "highlights": {
+    "topPain": [
+      "Preparacion de sesiones o clases",
+      1
+    ],
+    "topRepeat": [
+      "Consentimientos informados",
+      1
+    ],
+    "topBarrier": [
+      "Falta de formacion",
+      1
+    ],
+    "topFirstUse": [
+      "Preparar sesiones o presentaciones",
+      1
+    ],
+    "topIdealHelp": [
+      [
+        "Resumir la historia clinica del paciente antes de entrar",
+        1
+      ]
+    ]
+  },
+  "topTerms": []
+}
