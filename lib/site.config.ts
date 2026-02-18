@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "AINURE",
   legalName: "Ainure",
-  slogan: "Sastreria de Software",
+  slogan: "Sastrería de Software",
   description: "Digital Craftsmanship para productos y plataformas de alto impacto.",
   domain: "ainure.com",
   email: "ainure@ainure.com",

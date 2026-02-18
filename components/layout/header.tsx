@@ -12,7 +12,7 @@ import logoImage from "@/assets/images/logo.png";
 const navigation = [
   { name: "Inicio", href: "/" },
   { name: "Servicios", href: "/servicios" },
-  { name: "Metodologia", href: "/metodologia" },
+  { name: "Metodología", href: "/metodologia" },
   { name: "Valores", href: "/valores" },
   { name: "Talks", href: "/talks" },
 ];
@@ -80,17 +80,17 @@ export function Header() {
             ))}
             <Link
               href="/contacto"
-              className="rounded-full border border-white/20 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-text-primary transition-all hover:border-ainure-300/60 hover:text-ainure-200"
+              className="rounded-lg border border-white/20 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-text-primary transition-all hover:border-ainure-300/60 hover:text-ainure-200"
             >
-              Agendar Reunion
+              Agendar Reunión
             </Link>
           </div>
 
           <button
             type="button"
             onClick={() => setOpen((prev) => !prev)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-text-primary md:hidden"
-            aria-label={open ? "Cerrar menu" : "Abrir menu"}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-text-primary md:hidden"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={open}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -119,7 +119,7 @@ export function Header() {
               href="/contacto"
               className="mt-2 block rounded-lg border border-white/15 px-3 py-2 text-center font-mono text-xs uppercase tracking-[0.16em] text-text-primary"
             >
-              Agendar Reunion
+              Agendar Reunión
             </Link>
           </div>
         )}

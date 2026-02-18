@@ -91,7 +91,7 @@ export default function ServiciosPage() {
           </p>
           <Link
             href="/contacto"
-            className="inline-flex items-center rounded-full border border-ainure-300/50 bg-ainure-500/20 px-8 py-3 font-mono text-xs uppercase tracking-[0.16em] text-text-primary transition-all hover:bg-ainure-500/30"
+            className="inline-flex items-center rounded-lg border border-ainure-300/50 bg-ainure-500/20 px-8 py-3 font-mono text-xs uppercase tracking-[0.16em] text-text-primary transition-all hover:bg-ainure-500/30"
           >
             Consulta personalizada →
           </Link>
