@@ -203,7 +203,7 @@ export default function ContactoPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full rounded-full border border-ainure-300/50 bg-ainure-500/20 px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-text-primary transition-all hover:bg-ainure-500/30 disabled:opacity-50"
+                    className="w-full rounded-lg border border-ainure-300/50 bg-ainure-500/20 px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-text-primary transition-all hover:bg-ainure-500/30 disabled:opacity-50"
                   >
                     {isSubmitting ? "Enviando..." : "Enviar mensaje →"}
                   </button>

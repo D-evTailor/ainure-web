@@ -45,24 +45,24 @@ export default function HomePage() {
               variants={reveal}
               className="max-w-4xl font-display text-[2.4rem] leading-[0.92] text-text-primary sm:text-6xl lg:text-7xl"
             >
-              AINURE diseña software con precision editorial y alma de taller.
+              AINURE diseña software con precisión editorial y alma de taller.
             </motion.h1>
 
             <motion.p variants={reveal} className="max-w-xl text-base text-text-secondary md:text-lg">
-              Estrategia, producto y ejecucion en una sola mesa de trabajo. Menos ruido, mas impacto.
+              Estrategia, producto y ejecución en una sola mesa de trabajo. Menos ruido, más impacto.
             </motion.p>
 
             <motion.div variants={reveal} className="flex flex-wrap items-center gap-4">
               <Link
                 href="/contacto"
-                className="group inline-flex items-center gap-2 rounded-full border border-ainure-300/45 bg-ainure-500/20 px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-text-primary transition-all hover:border-ainure-300 hover:bg-ainure-500/30"
+                className="group inline-flex items-center gap-2 rounded-lg border border-ainure-300/45 bg-ainure-500/20 px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-text-primary transition-all hover:border-ainure-300 hover:bg-ainure-500/30"
               >
-                Solicitar Diagnostico
+                Solicitar Diagnóstico
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </Link>
               <Link
                 href="/servicios"
-                className="inline-flex items-center rounded-full border border-white/20 px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-text-secondary transition-colors hover:text-text-primary"
+                className="inline-flex items-center rounded-lg border border-white/20 px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-text-secondary transition-colors hover:text-text-primary"
               >
                 Ver Capacidades
               </Link>

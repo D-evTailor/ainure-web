@@ -5,7 +5,7 @@ import logoImage from "@/assets/images/logo2.png";
 
 const links = [
   { label: "Servicios", href: "/servicios" },
-  { label: "Metodologia", href: "/metodologia" },
+  { label: "Metodología", href: "/metodologia" },
   { label: "Valores", href: "/valores" },
   { label: "Talks", href: "/talks" },
   { label: "Contacto", href: "/contacto" },
@@ -30,7 +30,7 @@ export function Footer() {
               />
             </div>
             <p className="mt-4 max-w-lg text-sm text-text-secondary sm:text-base">
-              Construimos productos digitales con precision, criterio y detalle artesanal.
+              Construimos productos digitales con precisión, criterio y detalle artesanal.
             </p>
           </div>
 

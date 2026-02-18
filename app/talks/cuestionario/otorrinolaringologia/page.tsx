@@ -88,7 +88,7 @@ const q4_1Options = [
 const q4_2Options = [
   "Nada",
   "He probado ChatGPT/Claude",
-  "Uso herramientas tipo Copilot, Google AI Studio, generadores de imagenes o presentaciones",
+  "Uso herramientas tipo Copilot, Google AI Studio, generadores de imágenes o presentaciones",
   "Uso IA para papers",
   "Otro",
 ];
