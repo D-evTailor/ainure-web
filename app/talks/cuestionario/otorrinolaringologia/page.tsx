@@ -41,47 +41,47 @@ type Errors = Partial<Record<keyof QuestionnairePayload["answers"], string>>;
 
 const q1Options = [
   "Residente",
-  "Especialista 1 (<5 anos)",
-  "Especialista 2 (5-15 anos)",
-  "Especialista 3 (>15 anos)",
+  "Especialista 1 (<5 años)",
+  "Especialista 2 (5-15 años)",
+  "Especialista 3 (>15 años)",
   "Investigador",
-  "Jefe de servicio / coordinacion",
+  "Jefe de servicio / coordinación",
 ];
 
 const q2Options = [
-  "Redaccion de informes clinicos",
-  "Historia clinica y documentacion",
+  "Redacción de informes clínicos",
+  "Historia clínica y documentación",
   "Burocracia administrativa",
-  "Listas de espera y gestion de pacientes",
-  "Preparacion de sesiones o clases",
-  "Investigacion y articulos",
-  "Datos/estadistica/tablas",
-  "Quirofano (gestion, informes, programacion)",
-  "Comunicacion con pacientes",
-  "Revision de pruebas e imagenes",
+  "Listas de espera y gestión de pacientes",
+  "Preparación de sesiones o clases",
+  "Investigación y artículos",
+  "Datos/estadística/tablas",
+  "Quirófano (gestión, informes, programación)",
+  "Comunicación con pacientes",
+  "Revisión de pruebas e imágenes",
   "Otro",
 ];
 
 const q3Options = [
   "Informes de consulta",
-  "Informes quirurgicos",
+  "Informes quirúrgicos",
   "Consentimientos informados",
-  "Revision bibliografica / sintesis de papers",
-  "Emails / coordinacion / agendas",
-  "Codificacion / estadistica / scripts",
-  "Busqueda de informacion",
+  "Revisión bibliográfica / síntesis de papers",
+  "Emails / coordinación / agendas",
+  "Codificación / estadística / scripts",
+  "Búsqueda de información",
   "Respuestas a pacientes",
   "Informes para primaria",
-  "Informes de pruebas (audiometrias, TAC, etc.)",
-  "Presentaciones o sesiones clinicas",
+  "Informes de pruebas (audiometrías, TAC, etc.)",
+  "Presentaciones o sesiones clínicas",
   "Ninguna en especial",
   "Otra",
 ];
 
 const q4_1Options = [
-  "Si, de forma habitual",
-  "Si, alguna vez",
-  "He oido hablar, pero no la uso",
+  "Sí, de forma habitual",
+  "Sí, alguna vez",
+  "He oído hablar, pero no la uso",
   "No, nunca",
 ];
 
@@ -95,37 +95,37 @@ const q4_2Options = [
 
 const q5Options = [
   "Escribir el informe de la consulta mientras hablo",
-  "Resumir la historia clinica del paciente antes de entrar",
+  "Resumir la historia clínica del paciente antes de entrar",
   "Crear informes",
   "Preparar documentos para el paciente",
-  "Sugerir diagnosticos",
-  "Preparar sesiones clinicas o presentaciones",
-  "Ayudar con articulos o investigacion",
+  "Sugerir diagnósticos",
+  "Preparar sesiones clínicas o presentaciones",
+  "Ayudar con artículos o investigación",
   "Organizar agenda y listas de pacientes",
   "Otra",
 ];
 
 const q6Options = [
   "Falta de tiempo para aprender",
-  "No esta integrada en el sistema del hospital",
+  "No está integrada en el sistema del hospital",
   "Dudas sobre privacidad de datos",
-  "No se en que me podria ayudar",
-  "Falta de formacion",
+  "No sé en qué me podría ayudar",
+  "Falta de formación",
   "Desconfianza en los resultados",
-  "Nada, la usaria si estuviera disponible",
+  "Nada, la usaría si estuviera disponible",
   "No me interesa usar IA",
 ];
 
 const q7Options = [
-  "Como hablar con IA (prompting) para resultados fiables",
-  "Resumir y estructurar texto clinico/cientifico (sin inventar)",
+  "Cómo hablar con IA (prompting) para resultados fiables",
+  "Resumir y estructurar texto clínico/científico (sin inventar)",
   "Convertir ideas en documentos: protocolos, informes, emails, proyectos",
-  "Busqueda con fuentes y citacion (evidencia/guias)",
-  "Analisis de tablas/datos (Excel/CSV)",
+  "Búsqueda con fuentes y citación (evidencia/guías)",
+  "Análisis de tablas/datos (Excel/CSV)",
   "Crear presentaciones/sesiones en minutos",
   "Automatizaciones simples (plantillas, checklists, macros ligeras)",
-  "Imagenes: que puede y que NO puede (radiologia, dermato, etc.)",
-  "Evaluacion de riesgos: privacidad, sesgos, errores",
+  "Imágenes: qué puede y qué NO puede (radiología, dermato, etc.)",
+  "Evaluación de riesgos: privacidad, sesgos, errores",
   "Otro",
 ];
 
@@ -244,23 +244,23 @@ export default function CuestionarioOtorrinoPage() {
 
   function validate(): Errors {
     const nextErrors: Errors = {};
-    if (!answers.q1_profile) nextErrors.q1_profile = "Selecciona una opcion.";
-    if (answers.q2_main_pain.length < 1) nextErrors.q2_main_pain = "Selecciona al menos una opcion.";
+    if (!answers.q1_profile) nextErrors.q1_profile = "Selecciona una opción.";
+    if (answers.q2_main_pain.length < 1) nextErrors.q2_main_pain = "Selecciona al menos una opción.";
     if (answers.q2_main_pain.length > 2) nextErrors.q2_main_pain = "Puedes seleccionar hasta 2 opciones.";
-    if (q2HasOther && !answers.q2_other.trim()) nextErrors.q2_other = "Describe la opcion 'Otro'.";
-    if (answers.q3_repetitive_tasks.length < 1) nextErrors.q3_repetitive_tasks = "Selecciona al menos una opcion.";
+    if (q2HasOther && !answers.q2_other.trim()) nextErrors.q2_other = "Describe la opción «Otro».";
+    if (answers.q3_repetitive_tasks.length < 1) nextErrors.q3_repetitive_tasks = "Selecciona al menos una opción.";
     if (answers.q3_repetitive_tasks.length > 2) nextErrors.q3_repetitive_tasks = "Puedes seleccionar hasta 2 opciones.";
-    if (q3HasOther && !answers.q3_other.trim()) nextErrors.q3_other = "Describe la opcion 'Otra'.";
-    if (!answers.q4_1_ai_usage) nextErrors.q4_1_ai_usage = "Selecciona una opcion.";
-    if (answers.q4_2_used_tools.length < 1) nextErrors.q4_2_used_tools = "Selecciona al menos una opcion.";
-    if (q4HasOther && !answers.q4_2_other.trim()) nextErrors.q4_2_other = "Describe la opcion 'Otro'.";
-    if (answers.q5_assistant_help.length < 1) nextErrors.q5_assistant_help = "Selecciona al menos una opcion.";
+    if (q3HasOther && !answers.q3_other.trim()) nextErrors.q3_other = "Describe la opción «Otra».";
+    if (!answers.q4_1_ai_usage) nextErrors.q4_1_ai_usage = "Selecciona una opción.";
+    if (answers.q4_2_used_tools.length < 1) nextErrors.q4_2_used_tools = "Selecciona al menos una opción.";
+    if (q4HasOther && !answers.q4_2_other.trim()) nextErrors.q4_2_other = "Describe la opción «Otro».";
+    if (answers.q5_assistant_help.length < 1) nextErrors.q5_assistant_help = "Selecciona al menos una opción.";
     if (answers.q5_assistant_help.length > 2) nextErrors.q5_assistant_help = "Puedes seleccionar hasta 2 opciones.";
-    if (q5HasOther && !answers.q5_other.trim()) nextErrors.q5_other = "Describe la opcion 'Otra'.";
-    if (!answers.q6_main_barrier) nextErrors.q6_main_barrier = "Selecciona una opcion.";
-    if (answers.q7_use_cases.length < 1) nextErrors.q7_use_cases = "Selecciona al menos una opcion.";
+    if (q5HasOther && !answers.q5_other.trim()) nextErrors.q5_other = "Describe la opción «Otra».";
+    if (!answers.q6_main_barrier) nextErrors.q6_main_barrier = "Selecciona una opción.";
+    if (answers.q7_use_cases.length < 1) nextErrors.q7_use_cases = "Selecciona al menos una opción.";
     if (answers.q7_use_cases.length > 2) nextErrors.q7_use_cases = "Puedes seleccionar hasta 2 opciones.";
-    if (q7HasOther && !answers.q7_other.trim()) nextErrors.q7_other = "Describe la opcion 'Otro'.";
+    if (q7HasOther && !answers.q7_other.trim()) nextErrors.q7_other = "Describe la opción «Otro».";
     if (!answers.q8_1_open_answer.trim()) nextErrors.q8_1_open_answer = "Esta respuesta es obligatoria.";
     if (!answers.q8_2_open_answer.trim()) nextErrors.q8_2_open_answer = "Esta respuesta es obligatoria.";
     return nextErrors;
@@ -364,13 +364,13 @@ export default function CuestionarioOtorrinoPage() {
               </Button>
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              <span className="rounded-full border border-brand-500/30 bg-brand-600/10 px-3 py-1 text-xs font-medium text-brand-500">Cuestionario expres</span>
+              <span className="rounded-full border border-brand-500/30 bg-brand-600/10 px-3 py-1 text-xs font-medium text-brand-500">Cuestionario exprés</span>
               <span className="inline-flex items-center gap-2 rounded-full border border-input px-3 py-1 text-xs text-foreground/80"><Clock3 className="h-3.5 w-3.5" />2-3 minutos</span>
               <span className="inline-flex items-center gap-2 rounded-full border border-input px-3 py-1 text-xs text-foreground/80"><ShieldCheck className="h-3.5 w-3.5" />Datos protegidos</span>
             </div>
             <div>
-              <CardTitle className="text-2xl text-foreground sm:text-3xl">IA para Otorrinolaringologia</CardTitle>
-              <p className="mt-3 text-sm leading-6 text-foreground/80">Objetivo: entender que tareas del dia a dia os quitan mas tiempo y donde la IA puede ayudaros de forma realista.</p>
+              <CardTitle className="text-2xl text-foreground sm:text-3xl">IA para Otorrinolaringología</CardTitle>
+              <p className="mt-3 text-sm leading-6 text-foreground/80">Objetivo: entender qué tareas del día a día os quitan más tiempo y dónde la IA puede ayudaros de forma realista.</p>
             </div>
             <div className="flex items-center justify-between rounded-lg border border-border bg-background/60 px-4 py-3">
               <p className="text-sm text-foreground/80">Progreso del formulario</p>
@@ -391,7 +391,7 @@ export default function CuestionarioOtorrinoPage() {
               />
               <section className="space-y-4 rounded-xl border border-border bg-background/70 p-5">
                 <h2 className="text-lg font-semibold text-foreground">1. Perfil profesional</h2>
-                <p className="text-foreground/80">Cual es tu situacion actual?</p>
+                <p className="text-foreground/80">¿Cuál es tu situación actual?</p>
                 <RadioGroup value={answers.q1_profile} onValueChange={(value) => setAnswers((prev) => ({ ...prev, q1_profile: value }))} className="space-y-2">
                   {q1Options.map((option, index) => {
                     const id = `q1-${index}`;
@@ -402,8 +402,8 @@ export default function CuestionarioOtorrinoPage() {
               </section>
 
               <section className="space-y-4 rounded-xl border border-border bg-background/70 p-5">
-                <h2 className="text-lg font-semibold text-foreground">2. Dolor principal del dia a dia</h2>
-                <p className="text-foreground/80">Que parte de tu trabajo te consume mas tiempo o energia mental? (elige hasta 2)</p>
+                <h2 className="text-lg font-semibold text-foreground">2. Dolor principal del día a día</h2>
+                <p className="text-foreground/80">¿Qué parte de tu trabajo te consume más tiempo o energía mental? (Elige hasta 2.)</p>
                 <div className="space-y-2">
                   {q2Options.map((option, index) => {
                     const id = `q2-${index}`;
@@ -433,14 +433,14 @@ export default function CuestionarioOtorrinoPage() {
                   })}
                 </div>
                 <p className="text-xs text-muted-foreground">Seleccionadas: {answers.q2_main_pain.length}/2</p>
-                {q2HasOther ? <Input type="text" value={answers.q2_other} onChange={(event) => setAnswers((prev) => ({ ...prev, q2_other: event.target.value }))} placeholder="Especifica 'Otro'" className="border-input bg-background text-foreground" /> : null}
+                {q2HasOther ? <Input type="text" value={answers.q2_other} onChange={(event) => setAnswers((prev) => ({ ...prev, q2_other: event.target.value }))} placeholder="Especifica «Otro»" className="border-input bg-background text-foreground" /> : null}
                 {errors.q2_main_pain ? <p className="text-sm text-red-400">{errors.q2_main_pain}</p> : null}
                 {errors.q2_other ? <p className="text-sm text-red-400">{errors.q2_other}</p> : null}
               </section>
 
               <section className="space-y-4 rounded-xl border border-border bg-background/70 p-5">
                 <h2 className="text-lg font-semibold text-foreground">3. Tareas repetitivas</h2>
-                <p className="text-foreground/80">Que tarea repites tantas veces que te gustaria automatizarla? (elige hasta 2)</p>
+                <p className="text-foreground/80">¿Qué tarea repites tantas veces que te gustaría automatizarla? (Elige hasta 2.)</p>
                 <div className="space-y-2">
                   {q3Options.map((option, index) => {
                     const id = `q3-${index}`;
@@ -470,7 +470,7 @@ export default function CuestionarioOtorrinoPage() {
                   })}
                 </div>
                 <p className="text-xs text-muted-foreground">Seleccionadas: {answers.q3_repetitive_tasks.length}/2</p>
-                {q3HasOther ? <Input type="text" value={answers.q3_other} onChange={(event) => setAnswers((prev) => ({ ...prev, q3_other: event.target.value }))} placeholder="Especifica 'Otra'" className="border-input bg-background text-foreground" /> : null}
+                {q3HasOther ? <Input type="text" value={answers.q3_other} onChange={(event) => setAnswers((prev) => ({ ...prev, q3_other: event.target.value }))} placeholder="Especifica «Otra»" className="border-input bg-background text-foreground" /> : null}
                 {errors.q3_repetitive_tasks ? <p className="text-sm text-red-400">{errors.q3_repetitive_tasks}</p> : null}
                 {errors.q3_other ? <p className="text-sm text-red-400">{errors.q3_other}</p> : null}
               </section>
@@ -478,7 +478,7 @@ export default function CuestionarioOtorrinoPage() {
               <section className="space-y-6 rounded-xl border border-border bg-background/70 p-5">
                 <div className="space-y-4">
                   <h2 className="text-lg font-semibold text-foreground">4. Uso actual de IA</h2>
-                  <p className="text-foreground/80">4.1 Has usado alguna vez herramientas de IA tipo ChatGPT?</p>
+                  <p className="text-foreground/80">4.1 ¿Has usado alguna vez herramientas de IA tipo ChatGPT?</p>
                   <RadioGroup value={answers.q4_1_ai_usage} onValueChange={(value) => setAnswers((prev) => ({ ...prev, q4_1_ai_usage: value }))} className="space-y-2">
                     {q4_1Options.map((option, index) => {
                       const id = `q4-1-${index}`;
@@ -488,7 +488,7 @@ export default function CuestionarioOtorrinoPage() {
                   {errors.q4_1_ai_usage ? <p className="text-sm text-red-400">{errors.q4_1_ai_usage}</p> : null}
                 </div>
                 <div className="space-y-4">
-                  <p className="text-foreground/80">4.2 Que has usado ya?</p>
+                  <p className="text-foreground/80">4.2 ¿Qué has usado ya?</p>
                   <div className="space-y-2">
                     {q4_2Options.map((option, index) => {
                       const id = `q4-2-${index}`;
@@ -515,7 +515,7 @@ export default function CuestionarioOtorrinoPage() {
                       );
                     })}
                   </div>
-                  {q4HasOther ? <Input type="text" value={answers.q4_2_other} onChange={(event) => setAnswers((prev) => ({ ...prev, q4_2_other: event.target.value }))} placeholder="Especifica 'Otro'" className="border-input bg-background text-foreground" /> : null}
+                  {q4HasOther ? <Input type="text" value={answers.q4_2_other} onChange={(event) => setAnswers((prev) => ({ ...prev, q4_2_other: event.target.value }))} placeholder="Especifica «Otro»" className="border-input bg-background text-foreground" /> : null}
                   {errors.q4_2_used_tools ? <p className="text-sm text-red-400">{errors.q4_2_used_tools}</p> : null}
                   {errors.q4_2_other ? <p className="text-sm text-red-400">{errors.q4_2_other}</p> : null}
                 </div>
@@ -523,7 +523,7 @@ export default function CuestionarioOtorrinoPage() {
 
               <section className="space-y-4 rounded-xl border border-border bg-background/70 p-5">
                 <h2 className="text-lg font-semibold text-foreground">5. Escenario ideal de ayuda</h2>
-                <p className="text-foreground/80">Imagina que tienes un asistente humano en tu trabajo diario. Que te gustaria que hiciera por ti? (elige hasta 2)</p>
+                <p className="text-foreground/80">Imagina que tienes un asistente humano en tu trabajo diario. ¿Qué te gustaría que hiciera por ti? (Elige hasta 2.)</p>
                 <div className="space-y-2">
                   {q5Options.map((option, index) => {
                     const id = `q5-${index}`;
@@ -553,14 +553,14 @@ export default function CuestionarioOtorrinoPage() {
                   })}
                 </div>
                 <p className="text-xs text-muted-foreground">Seleccionadas: {answers.q5_assistant_help.length}/2</p>
-                {q5HasOther ? <Input type="text" value={answers.q5_other} onChange={(event) => setAnswers((prev) => ({ ...prev, q5_other: event.target.value }))} placeholder="Especifica 'Otra'" className="border-input bg-background text-foreground" /> : null}
+                {q5HasOther ? <Input type="text" value={answers.q5_other} onChange={(event) => setAnswers((prev) => ({ ...prev, q5_other: event.target.value }))} placeholder="Especifica «Otra»" className="border-input bg-background text-foreground" /> : null}
                 {errors.q5_assistant_help ? <p className="text-sm text-red-400">{errors.q5_assistant_help}</p> : null}
                 {errors.q5_other ? <p className="text-sm text-red-400">{errors.q5_other}</p> : null}
               </section>
 
               <section className="space-y-4 rounded-xl border border-border bg-background/70 p-5">
                 <h2 className="text-lg font-semibold text-foreground">6. Barrera principal para adoptar IA</h2>
-                <p className="text-foreground/80">Que es lo que mas te frena para usar IA en tu trabajo diario?</p>
+                <p className="text-foreground/80">¿Qué es lo que más te frena para usar IA en tu trabajo diario?</p>
                 <RadioGroup value={answers.q6_main_barrier} onValueChange={(value) => setAnswers((prev) => ({ ...prev, q6_main_barrier: value }))} className="space-y-2">
                   {q6Options.map((option, index) => {
                     const id = `q6-${index}`;
@@ -572,7 +572,7 @@ export default function CuestionarioOtorrinoPage() {
 
               <section className="space-y-4 rounded-xl border border-border bg-background/70 p-5">
                 <h2 className="text-lg font-semibold text-foreground">7. Casos de uso</h2>
-                <p className="text-foreground/80">Que te seria mas util ver en la charla? (elige hasta 2)</p>
+                <p className="text-foreground/80">¿Qué te sería más útil ver en la charla? (Elige hasta 2.)</p>
                 <div className="space-y-2">
                   {q7Options.map((option, index) => {
                     const id = `q7-${index}`;
@@ -602,17 +602,17 @@ export default function CuestionarioOtorrinoPage() {
                   })}
                 </div>
                 <p className="text-xs text-muted-foreground">Seleccionadas: {answers.q7_use_cases.length}/2</p>
-                {q7HasOther ? <Input type="text" value={answers.q7_other} onChange={(event) => setAnswers((prev) => ({ ...prev, q7_other: event.target.value }))} placeholder="Especifica 'Otro'" className="border-input bg-background text-foreground" /> : null}
+                {q7HasOther ? <Input type="text" value={answers.q7_other} onChange={(event) => setAnswers((prev) => ({ ...prev, q7_other: event.target.value }))} placeholder="Especifica «Otro»" className="border-input bg-background text-foreground" /> : null}
                 {errors.q7_use_cases ? <p className="text-sm text-red-400">{errors.q7_use_cases}</p> : null}
                 {errors.q7_other ? <p className="text-sm text-red-400">{errors.q7_other}</p> : null}
               </section>
 
               <section className="space-y-4 rounded-xl border border-border bg-background/70 p-5">
                 <h2 className="text-lg font-semibold text-foreground">8. Pregunta abierta clave</h2>
-                <p className="text-foreground/80">8.1 Si pudieras eliminar una tarea de tu trabajo manana mismo, cual seria?</p>
+                <p className="text-foreground/80">8.1 ¿Si pudieras eliminar una tarea de tu trabajo mañana mismo, cuál sería?</p>
                 <Textarea value={answers.q8_1_open_answer} onChange={(event) => setAnswers((prev) => ({ ...prev, q8_1_open_answer: event.target.value }))} className="min-h-24 border-input bg-background text-foreground" placeholder="Respuesta" />
                 {errors.q8_1_open_answer ? <p className="text-sm text-red-400">{errors.q8_1_open_answer}</p> : null}
-                <p className="pt-2 text-foreground/80">8.2 Si tuvieras una varita magica, que resultado te gustaria obtener?</p>
+                <p className="pt-2 text-foreground/80">8.2 ¿Si tuvieras una varita mágica, qué resultado te gustaría obtener?</p>
                 <Textarea value={answers.q8_2_open_answer} onChange={(event) => setAnswers((prev) => ({ ...prev, q8_2_open_answer: event.target.value }))} className="min-h-24 border-input bg-background text-foreground" placeholder="Respuesta" />
                 {errors.q8_2_open_answer ? <p className="text-sm text-red-400">{errors.q8_2_open_answer}</p> : null}
               </section>
