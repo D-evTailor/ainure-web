@@ -1,7 +1,0 @@
-packages:
-  - 'packages/*'
-
-# Permitir scripts de instalación para estas dependencias (p. ej. sharp, unrs-resolver)
-onlyBuiltDependencies:
-  - sharp
-  - unrs-resolver 
