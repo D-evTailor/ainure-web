@@ -11,8 +11,31 @@ const manrope = Manrope({ subsets: ["latin"], variable: "--font-sans" });
 const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-display" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ainure.com"),
   title: `${siteConfig.name} - ${siteConfig.slogan}`,
   description: siteConfig.description,
+  openGraph: {
+    title: `${siteConfig.name} - ${siteConfig.slogan}`,
+    description: siteConfig.description,
+    url: "https://ainure.com",
+    siteName: siteConfig.name,
+    locale: "es_ES",
+    type: "website",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} logo`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} - ${siteConfig.slogan}`,
+    description: siteConfig.description,
+    images: ["/logo.png"],
+  },
   generator: "v0.dev",
 };
 

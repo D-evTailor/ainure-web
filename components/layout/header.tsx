@@ -68,10 +68,10 @@ export function Header() {
                 href={item.href}
                 className={cn(
                   "font-mono text-[11px] uppercase tracking-[0.2em] transition-colors",
-                  item.href === "/talks"
-                    ? "font-semibold text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.22)]"
-                    : pathname === item.href
-                      ? "text-ainure-300"
+                  pathname === item.href
+                    ? "text-ainure-300"
+                    : item.href === "/talks"
+                      ? "font-semibold text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.22)]"
                       : "text-text-muted hover:text-text-primary",
                 )}
               >
@@ -105,10 +105,10 @@ export function Header() {
                 href={item.href}
                 className={cn(
                   "block rounded-lg px-3 py-2 font-mono text-xs uppercase tracking-[0.16em] transition-colors",
-                  item.href === "/talks"
-                    ? "font-semibold text-white"
-                    : pathname === item.href
-                      ? "bg-white/10 text-ainure-300"
+                  pathname === item.href
+                    ? "bg-white/10 text-ainure-300"
+                    : item.href === "/talks"
+                      ? "font-semibold text-white"
                       : "text-text-secondary hover:bg-white/5 hover:text-text-primary",
                 )}
               >
