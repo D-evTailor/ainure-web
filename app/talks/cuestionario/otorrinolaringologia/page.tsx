@@ -391,7 +391,7 @@ export default function CuestionarioOtorrinoPage() {
               />
               <section className="space-y-4 rounded-xl border border-border bg-background/70 p-5">
                 <h2 className="text-lg font-semibold text-foreground">1. Perfil profesional</h2>
-                <p className="text-foreground/80">¿Cuál es tu situación actual?</p>
+                <p className="text-foreground/80">{"\u00BF"}Cuál es tu situación actual?</p>
                 <RadioGroup value={answers.q1_profile} onValueChange={(value) => setAnswers((prev) => ({ ...prev, q1_profile: value }))} className="space-y-2">
                   {q1Options.map((option, index) => {
                     const id = `q1-${index}`;
@@ -403,7 +403,7 @@ export default function CuestionarioOtorrinoPage() {
 
               <section className="space-y-4 rounded-xl border border-border bg-background/70 p-5">
                 <h2 className="text-lg font-semibold text-foreground">2. Dolor principal del día a día</h2>
-                <p className="text-foreground/80">¿Qué parte de tu trabajo te consume más tiempo o energía mental? (Elige hasta 2.)</p>
+                <p className="text-foreground/80">{"\u00BF"}Qué parte de tu trabajo te consume más tiempo o energía mental? (Elige hasta 2.)</p>
                 <div className="space-y-2">
                   {q2Options.map((option, index) => {
                     const id = `q2-${index}`;
@@ -440,7 +440,7 @@ export default function CuestionarioOtorrinoPage() {
 
               <section className="space-y-4 rounded-xl border border-border bg-background/70 p-5">
                 <h2 className="text-lg font-semibold text-foreground">3. Tareas repetitivas</h2>
-                <p className="text-foreground/80">¿Qué tarea repites tantas veces que te gustaría automatizarla? (Elige hasta 2.)</p>
+                <p className="text-foreground/80">{"\u00BF"}Qué tarea repites tantas veces que te gustaría automatizarla? (Elige hasta 2.)</p>
                 <div className="space-y-2">
                   {q3Options.map((option, index) => {
                     const id = `q3-${index}`;
@@ -478,7 +478,7 @@ export default function CuestionarioOtorrinoPage() {
               <section className="space-y-6 rounded-xl border border-border bg-background/70 p-5">
                 <div className="space-y-4">
                   <h2 className="text-lg font-semibold text-foreground">4. Uso actual de IA</h2>
-                  <p className="text-foreground/80">4.1 ¿Has usado alguna vez herramientas de IA tipo ChatGPT?</p>
+                  <p className="text-foreground/80">4.1 {"\u00BF"}Has usado alguna vez herramientas de IA tipo ChatGPT?</p>
                   <RadioGroup value={answers.q4_1_ai_usage} onValueChange={(value) => setAnswers((prev) => ({ ...prev, q4_1_ai_usage: value }))} className="space-y-2">
                     {q4_1Options.map((option, index) => {
                       const id = `q4-1-${index}`;
@@ -488,7 +488,7 @@ export default function CuestionarioOtorrinoPage() {
                   {errors.q4_1_ai_usage ? <p className="text-sm text-red-400">{errors.q4_1_ai_usage}</p> : null}
                 </div>
                 <div className="space-y-4">
-                  <p className="text-foreground/80">4.2 ¿Qué has usado ya?</p>
+                  <p className="text-foreground/80">4.2 {"\u00BF"}Qué has usado ya?</p>
                   <div className="space-y-2">
                     {q4_2Options.map((option, index) => {
                       const id = `q4-2-${index}`;
@@ -523,7 +523,7 @@ export default function CuestionarioOtorrinoPage() {
 
               <section className="space-y-4 rounded-xl border border-border bg-background/70 p-5">
                 <h2 className="text-lg font-semibold text-foreground">5. Escenario ideal de ayuda</h2>
-                <p className="text-foreground/80">Imagina que tienes un asistente humano en tu trabajo diario. ¿Qué te gustaría que hiciera por ti? (Elige hasta 2.)</p>
+                <p className="text-foreground/80">Imagina que tienes un asistente humano en tu trabajo diario. {"\u00BF"}Qué te gustaría que hiciera por ti? (Elige hasta 2.)</p>
                 <div className="space-y-2">
                   {q5Options.map((option, index) => {
                     const id = `q5-${index}`;
@@ -560,7 +560,7 @@ export default function CuestionarioOtorrinoPage() {
 
               <section className="space-y-4 rounded-xl border border-border bg-background/70 p-5">
                 <h2 className="text-lg font-semibold text-foreground">6. Barrera principal para adoptar IA</h2>
-                <p className="text-foreground/80">¿Qué es lo que más te frena para usar IA en tu trabajo diario?</p>
+                <p className="text-foreground/80">{"\u00BF"}Qué es lo que más te frena para usar IA en tu trabajo diario?</p>
                 <RadioGroup value={answers.q6_main_barrier} onValueChange={(value) => setAnswers((prev) => ({ ...prev, q6_main_barrier: value }))} className="space-y-2">
                   {q6Options.map((option, index) => {
                     const id = `q6-${index}`;
@@ -572,7 +572,7 @@ export default function CuestionarioOtorrinoPage() {
 
               <section className="space-y-4 rounded-xl border border-border bg-background/70 p-5">
                 <h2 className="text-lg font-semibold text-foreground">7. Casos de uso</h2>
-                <p className="text-foreground/80">¿Qué te sería más útil ver en la charla? (Elige hasta 2.)</p>
+                <p className="text-foreground/80">{"\u00BF"}Qué te sería más útil ver en la charla? (Elige hasta 2.)</p>
                 <div className="space-y-2">
                   {q7Options.map((option, index) => {
                     const id = `q7-${index}`;
@@ -609,10 +609,10 @@ export default function CuestionarioOtorrinoPage() {
 
               <section className="space-y-4 rounded-xl border border-border bg-background/70 p-5">
                 <h2 className="text-lg font-semibold text-foreground">8. Pregunta abierta clave</h2>
-                <p className="text-foreground/80">8.1 ¿Si pudieras eliminar una tarea de tu trabajo mañana mismo, cuál sería?</p>
+                <p className="text-foreground/80">8.1 {"\u00BF"}Si pudieras eliminar una tarea de tu trabajo mañana mismo, cuál sería?</p>
                 <Textarea value={answers.q8_1_open_answer} onChange={(event) => setAnswers((prev) => ({ ...prev, q8_1_open_answer: event.target.value }))} className="min-h-24 border-input bg-background text-foreground" placeholder="Respuesta" />
                 {errors.q8_1_open_answer ? <p className="text-sm text-red-400">{errors.q8_1_open_answer}</p> : null}
-                <p className="pt-2 text-foreground/80">8.2 ¿Si tuvieras una varita mágica, qué resultado te gustaría obtener?</p>
+                <p className="pt-2 text-foreground/80">8.2 {"\u00BF"}Si tuvieras una varita mágica, qué resultado te gustaría obtener?</p>
                 <Textarea value={answers.q8_2_open_answer} onChange={(event) => setAnswers((prev) => ({ ...prev, q8_2_open_answer: event.target.value }))} className="min-h-24 border-input bg-background text-foreground" placeholder="Respuesta" />
                 {errors.q8_2_open_answer ? <p className="text-sm text-red-400">{errors.q8_2_open_answer}</p> : null}
               </section>
