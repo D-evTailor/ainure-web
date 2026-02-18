@@ -19,6 +19,7 @@ const navigation = [
 
 export function Header() {
   const pathname = usePathname();
+  const isQuestionnairePage = pathname.startsWith("/talks/cuestionario");
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -32,6 +33,10 @@ export function Header() {
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  if (isQuestionnairePage) {
+    return null;
+  }
 
   return (
     <header
