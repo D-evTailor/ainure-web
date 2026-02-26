@@ -81,7 +81,7 @@ Demostrar que la calidad del prompt determina la calidad de la respuesta. Es la 
 
 ### Guion
 
-> "6 de cada 10 nos dijisteis: 'Vale, todo muy bonito, pero ¿cómo le hablo a esto para que no se invente las cosas?'. Esa es la habilidad número uno de esta década. Vamos a verlo."
+> "nos pedisteis aprender cómo hablar con la IA para obtener mejores resultados. Aquí la clave es el prompt y el contexto. Veamos un ejemplo práctico."
 
 **[PANTALLA: Dos ventanas lado a lado]**
 
@@ -95,9 +95,9 @@ sin otorrea ni fiebre. Otoscopia normal, pero refiere dolor
 al masticar. Sin antecedentes de interes.
 ```
 
-> "En este primer ejemplo, disparo la duda sin contexto. Cero estructura y sin decirle quién soy."
+> "En este primer ejemplo, disparo la duda sin contexto. No existe contexto previo, ni rol, ni formato, ni ordenes claras. Estamos ayudando poco y mal."
 
-**Resultado:** Texto correcto pero generico. Diagnistico diferencial basico sin estructura. Manejo tipo "libro de texto". Util pero no optimizado para la consulta.
+**Resultado:** Texto correcto pero generico. Diagnostico diferencial basico sin estructura. Manejo tipo "libro de texto". Util pero no optimizado para la consulta. Quizás util si tengo las cosas muy claras.
 
 **Prompt de calidad (ventana derecha):**
 ```
@@ -117,7 +117,7 @@ Formato: tabla con columnas [Diagnostico | A favor | En contra | Siguiente paso]
 
 **Resultado:** Tabla estructurada con 6 diagnosticos ordenados por probabilidad (TTM, dental, salivar, neuralgia, neoplasia, arteritis). Cada uno con a favor / en contra / siguiente paso. Red flags detalladas. Conducta sugerida.
 
-> "Misma herramienta, idéntico paciente. La distancia entre perder el tiempo leyendo un refrito inútil de texto o recibir una súper tabla de diagnósticos y 'red flags' lista para aplicar... ha sido simplemente vuestra manera de pedirlo. El famoso *prompt.*"
+> "Misma herramienta, idéntico paciente. La distancia entre perder el tiempo leyendo un refrito inútil de texto o recibir una súper tabla de diagnósticos y 'red flags' lista para aplicar... ha sido simplemente cambiar la manera de pedirlo."
 
 ### Reglas de prompting para llevar a casa
 
@@ -128,7 +128,7 @@ Formato: tabla con columnas [Diagnostico | A favor | En contra | Siguiente paso]
 3. **Formato de salida:** Pide tabla, lista, checklist — lo que te sea mas util
 4. **Restricciones:** "Maximo 1 pagina", "Solo guias SEORL 2024", "Tono para un R1"
 
-> "Si nos os acordáis de nada más al salir por la puerta, que sea esto: dejad de hablar con la IA como si fuera Alexa. Habladle como a un residente listísimo pero que hoy es su primer día en vuestro servicio, y os hará maravillas."
+> "Si nos os acordáis de nada más al salir por la puerta, que sea esto: dejad de hablar con la IA como si fuera Alexa. Habladle como a un profesional más listísimo, pero que hoy es su primer día en vuestro servicio. Con este enfoque conseguiréis resultados."
 
 **[SLIDE: El súper poder para los "prompts"]**
 
@@ -155,47 +155,35 @@ Resolver el dolor #1 (47%): datos, estadistica y tablas. Mostrar que la IA puede
 
 ### Guion
 
-> "Llegamos a vuestro mayor quebradero de cabeza orgánico. Casi la mitad confesasteis que cruzar datos, tablas de Excel y estadística son vuestro agujero negro de productividad. Os voy a enseñar cómo finiquitar ese problema."
+> "Casi la mitad confesasteis que cruzar datos, tablas de Excel y estadística son vuestro agujero negro de productividad. La IA nos permite romper fronteras profesionales, herramientas como PowerBI o Tableau, R, SPSS, Python, etc... Teorías matemáticas, estadísticas, etc... No es necesario ser un experto en estas herramientas para poder obtener resultados de calidad, estamos a golpe de prompt de adquirir inteligencia a nivel PhD sobre cualquier materia. Por ejemplo, yo no se programar en html o javascript, pero puedo pedirle a la IA que me genere el codigo para crear una pagina web interactiva."
 
-**[PANTALLA: CSV abierto — columnas visibles]**
+**[SLIDE: Captura del Excel inicial]**
 
-> "Mirad este Excel. 50 amigdalectomías ficticias. Mitad operados con bisturí eléctrico, mitad con coblator. Las variables de siempre: edad, dolor, sangrado, tiempos, complicaciones..."
+> "Mirad este Excel. 50 amigdalectomías ficticias. Mitad operados con bisturí eléctrico, mitad con coblator. Las variables de siempre: edad, dolor, sangrado, tiempos, complicaciones... Este mismo conjunto de datos lo he creado yo mismo con IA, y lo he hecho en 2 minutos hablando con Miriam mi compañera infiltrada en el servicio."
 
-> "Si vais a un congreso y tenéis que exprimir esto, es rogarle tiempo a un compañero o pelearos durante semanas. Hoy, vamos a decirle a la IA que analice, cruce datos y genere estadística inferencial y de regresión completa. Lo que haríais en SPSS en tres días, lo tenemos en 30 segundos."
+> "Si vais a un congreso y tenéis que presentar esto, es rogarle tiempo a un compañero o pelearos durante semanas, pedir favores, hablar con otros profesionales, etc... Hoy, vamos a decirle a la IA que analice, cruce datos y genere estadística inferencial y de regresión completa. Lo que haríais en SPSS en tres días o más, peleandonos con el lenguaje, errores inteligibles y mil cosas más... Ahora lo tenemos en 5 minutos."
 
-**Subir el CSV y ejecutar el prompt (elegir segun audiencia):**
-
-**Opcion A — Generar codigo R (si hay investigadores/residentes):**
-
-> "Para los perfiles investigadores: le exijo un script inmaculado de R directo para ejecutar."
-
-(Usar prompt 1 de `orl-demo2-prompts.md`)
-
-**Opcion B — Generar web app (si se busca impacto visual):**
-
-> "Si sois de visual: le pido que pase este Excel aburrido a una web interactiva llena de gráficos lista para proyectar."
-
-(Usar prompt 2 de `orl-demo2-prompts.md`)
-
-**Mientras la IA trabaja, explicar:**
+**[SLIDE: Captura de pantalla de nuestro Prompt]**
 
 > "El truco sigue intacto: no le lanzo solo el Excel pidiendo 'analiza'. Le explico mi perfil profesional y le ordeno las regresiones y tests estadísticos concretos que quiero buscar, y cómo quiero mis gráficos."
 
-**Mostrar resultados:**
+**[SLIDE: Resultados obtenidos cruzando los datos (Imágenes de Gráficos/Web App/Script R)]**
 
-> "¡Magia clínica! En medio minuto nos devuelve variables cruzadas, 'p-valores', intervalos de confianza y gráficos etiquetados. Mismo rigor, cero horas perdidas."
+> "¡Magia! En este pantallazo podéis ver lo que nos ha devuelto en medio minuto: variables cruzadas, 'p-valores', intervalos de confianza y gráficos etiquetados. Mismo rigor, cero horas perdidas."
 
-**Senalar los hallazgos clave que la IA va a encontrar:**
+**Señalar los hallazgos clave directamente en la imagen:**
 
 > "Incluso nos resalta verbalmente en conclusiones que con coblator se reduce significativamente el dolor, y que edad y técnica son los predictores determinantes a la semana postop. Todo esto se copia, se pega y nos vamos al congreso."
 
 ### Mensajes clave
 
-> "Grabaos tres conceptos clave para que no os pillen:
+> "Grabaos tres conceptos clave:
 >
 > 1. **Cero datos reales en abierto.** Jamás subáis el número de historia de un paciente a estas web. Anonimizad siempre los Excel previamente.
-> 2. **Supervisión de la estadística.** Los cálculos pueden patinar. En publicaciones de peso, aseguraos de que un metodólogo os corrobora las fórmulas finales.
+> 2. **Supervisión de la estadística.** Los cálculos pueden patinar. En publicaciones de peso, aseguraos de que un metodólogo os corrobora las fórmulas finales y los resultados.
 > 3. **Potencial infinito.** Cualquier contabilidad tediosa, listado de pacientes o encuesta, podéis pedirle un dashboard o que aplique el test que consideréis. El límite de análisis es nulo."
+>
+> Los únicos límites son vuestra imaginación, el tiempo que tengáis y la legislación vigente.
 
 ### Material necesario
 - CSV: `reports/demo-amigdalectomias-orl.csv`
@@ -215,11 +203,11 @@ Mostrar que la IA puede generar documentos clinicos estructurados de alta calida
 
 ### Guion
 
-> "El 40% indicasteis que pelearos frente a la página en blanco generando informes recurrentes consume vuestra energía táctica por completo. Vamos a aniquilar el síndrome del papel en blanco."
+> "El 40% indicasteis que la redacción de informes recurrentes y documentación consume gran parte de vuestro tiempo de consulta. Vamos a ver cómo agilizar drásticamente la creación de documentos desde cero."
 
 **Caso: Protocolo de amigdalectomia**
 
-> "Nos cae el marrón de la gerencia médica: redactad hoy mismo un protocolo completo para el servicio desde cero."
+> "Imaginad un escenario común: desde la dirección médica o jefatura de servicio os solicitan redactar y actualizar hoy mismo el protocolo de amigdalectomía."
 
 **Prompt pobre:**
 ```
@@ -255,20 +243,28 @@ consultarlo como referencia rapida. Extension: max 3 paginas.
 
 **Resultado:** Protocolo completo y profesional. Criterios Paradise con cifras, checklist preoperatorio con casillas, dos tecnicas descritas paso a paso, protocolo analgesico con alertas (codeina contraindicada en <12 anos), KPIs de calidad con objetivos numericos.
 
-> "Ahí lo tenéis en vivo. Criterios Paradise, contraindicaciones bien matizadas, alertas por analgésico según edades e indicadores concretos de seguimiento. Hemos saltado del 0 al 80% del trabajo de un plumazo. Ahora ajustad vuestros matices, pero ya lo habéis resuelto."
+> "Ahí lo tenéis en pantalla. Fijaos cómo la IA ha estructurado los criterios Paradise, ha matizado las contraindicaciones, ha añadido alertas por analgésico según edades y propuesto indicadores concretos de seguimiento. Evidentemente, ahora toca revisar, refinar y darle vuestro toque clínico final. Pero acabamos de avanzar del 0% al 80% del trabajo en segundos."
 
 ### Archivos de referencia
 - `reports/orl - Demo C - protocolo - prompt calidad.md`
 - `reports/orl - Demo C - protocolo - prompt pobre.md`
 
-### Bonus rapido (si queda tiempo): Demo B — Busqueda de articulos
+### Bonus de Alto Impacto: Búsqueda bibliográfica y *Deep Research* (5 min extra si hay interés)
 
-> "Y una perla final para los que hagáis doctorados o papers: usad IA especializadas en busquedas tipo *Consensus* con citación científica directa o DOIs reales."
+> "A muchos de vosotros la investigación, tesis o la búsqueda de artículos os sigue robando horas de descanso. Para esto hay una regla de oro: la IA generativa de texto (como ChatGPT normal) **no es un buscador de papers**, y si la usáis así, os inventará artículos que no existen (alucinaciones). Pero, si usamos herramientas creadas *específicamente* para esto, la historia cambia."
 
-Mostrar brevemente la diferencia entre buscar "vertigo" vs. pedir una estrategia PubMed con MeSH terms para una revision sistematica de VPPB en >65 anos. Consensus devuelve articulos concretos con DOI y nivel de evidencia.
+**Caso 1: Consensus (Motor de búsqueda con citas Reales)**
 
-- `reports/orl - Demo B - Search articles - prompt calidad.md`
-- `reports/orl - Demo B - Search articles - prompt pobre.md`
+> "Si usáis plataformas conectadas directamente a bases de datos científicas reales, como *Consensus*, podéis hacer preguntas clínicas directas. Frente a buscar simplemente la palabra 'vértigo' en PubMed y enfrentaros a 15.000 resultados, podéis preguntarle: *'¿Cuál es la evidencia actual sobre la eficacia de la maniobra de Epley vs Semont en VPPB en mayores de 65 años?'.*
+> El sistema no solo os hará un resumen ejecutivo de la evidencia más robusta, sino que **cada frase estará ligada a un artículo real con su nivel de evidencia y su DOI oficial.**"
+
+**Caso 2: El modo *Deep Research* (Vuestro analista de investigación personal)**
+
+> "El siguiente nivel al que estamos llegando esta misma semana es el modelo *Deep Research* de herramientas como Gemini o ChatGPT. Le podéis pedir una revisión sistemática en lenguaje natural. La IA navegará por internet de forma autónoma durante 10 o 15 minutos, leyendo cientos de estudios completos, cribando los que tienen bajo nivel de evidencia, y os devolverá un informe con los estudios incluidos, nivel de riesgo de sesgo y conclusiones consolidadas. Literalmente, **lo que nosotros tardaríamos una semana en hacer a mano.**"
+
+- Archivos de referencia para consulta posterior: 
+  - `reports/orl - Demo B - Search articles - prompt calidad.md`
+  - `reports/orl - Demo B - Search articles - prompt pobre.md`
 
 ---
 
@@ -279,7 +275,7 @@ Dejarles herramientas concretas que puedan usar manana. No abrumar: 5-6 herramie
 
 ### Guion
 
-> "Mi objetivo hoy no era que pensaseis 'qué charla tan interesante', sino soltaros en vuestra mano las herramientas para que mañana lleguéis antes a casa a cenar. Aquí tenéis el atajo."
+> "Mi objetivo hoy no era que pensaseis 'qué charla tan interesante', sino soltaros en vuestra mano las herramientas para que mañana lleguéis antes a casa a cenar. Y con las que podáis empezar a trabajar de forma más eficiente."
 
 **[SLIDE: Tabla de herramientas o QR a landing page]**
 
@@ -292,7 +288,7 @@ Dejarles herramientas concretas que puedan usar manana. No abrumar: 5-6 herramie
 | **Gamma** | Crear presentaciones en minutos | Freemium | N/A |
 | **NotebookLM** | Analizar multiples fuentes, generar resumenes | Gratis | NO subir PHI |
 
-> "Repetimos mandato de supervivencia: Si algo es gratis, tú eres el producto empresarial. Las plataformas públicas no están ahí para blindaros, **bajo ningún concepto subáis datos reales e identificativos** a una caja del buscador general de la IA sin supervisión."
+> "Recordad: Si algo es gratis, tú eres el producto empresarial. Las plataformas públicas no están ahí para blindaros, **bajo ningún concepto subáis datos reales e identificativos** a una caja del buscador general de la IA sin supervisión."
 
 **[SLIDE: QR code]**
 
