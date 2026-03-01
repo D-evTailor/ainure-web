@@ -35,7 +35,7 @@ const outcomeItems = [
 const charlaBullets = [
   "Ideas y marco conceptual",
   "Demostraciones y ejemplos",
-  "Duración: 60–90 min",
+  "Duración: 20–30 min",
   "Sin implementación en vivo",
 ];
 
